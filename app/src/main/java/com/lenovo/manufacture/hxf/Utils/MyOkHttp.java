@@ -1,4 +1,4 @@
-package com.lenovo.manufacture.hxf;
+package com.lenovo.manufacture.hxf.Utils;
 
 import android.content.Context;
 
