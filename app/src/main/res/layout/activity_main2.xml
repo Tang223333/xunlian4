@@ -9,6 +9,7 @@
     tools:context=".Main2Activity">
 
     <TextView
+        android:id="@+id/thl"
         android:text="唐海龙"
         android:gravity="center"
         android:textSize="48sp"
