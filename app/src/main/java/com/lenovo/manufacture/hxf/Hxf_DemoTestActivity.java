@@ -31,6 +31,8 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
     private JSONObject resultData;
     private Timer timer;
     private LinearLayout layout_father;
+    public static int Height;
+    public static int Width;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,8 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void addViewToLayout() {
+        Width = 1;
+        Height = 1;
         layout_father = findViewById(R.id.layout_father);
 
         //TODO 在布局中动态添加一个TextView
@@ -66,6 +70,9 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
         textView.setLayoutParams(layoutParams);
         textView.setText("这是我动态添加的一个TextView");
         textView.setTextColor(Color.BLUE);
+        textView.setTextSize(38);
+        textView.setPadding(50,0,50,80);
+
         button = new Button(this);
         button.setText("请点击我以获取网络数据~");
         button.setId(0x001);
