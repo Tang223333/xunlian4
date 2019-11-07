@@ -2,9 +2,13 @@ package com.lenovo.manufacture;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.lenovo.manufacture.cy.adapter.CyListAdapter;
+import com.lenovo.manufacture.cy.adapter.Demo;
 import com.lenovo.manufacture.hxf.Utils.MyOkHttp;
 
 import org.json.JSONObject;
@@ -16,10 +20,15 @@ import java.util.TimerTask;
 
 public class Main4Activity extends AppCompatActivity {
     private ListView cy_lv1;//陈宇
-    private List<demo> list=new ArrayList<demo>();
+    private List<Demo> list=new ArrayList<Demo>();
     private Timer timer=new Timer();
     private Handler handler=new Handler();
     private JSONObject object;
+    private int pm25;
+    private int co2;
+    private int light;
+    private int hum;
+    private int tem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,62 +55,21 @@ public class Main4Activity extends AppCompatActivity {
 
     private void postdata() {
         try {
-            object = MyOkHttp.postData(this,"","");
+            object = MyOkHttp.postData(this,"/transportservice/action/GetAllSense.do","{\"UserName\":\"user1\"}");
+            pm25 = object.getInt("pm2.5");
+            co2 = object.getInt("co2");
+            light = object.getInt("LightIntensity");
+            hum = object.getInt("humidity");
+            tem = object.getInt("temperature");
         }catch (Exception e){
 
         }
         handler.post(new Runnable() {
             @Override
             public void run() {
-
+                list.add(new Demo(pm25,co2,light,hum+"::"+tem));
+                cy_lv1.setAdapter(new CyListAdapter(Main4Activity.this,list));
             }
         });
-    }
-
-
-    class demo{
-        int a;
-        int b;
-        int c;
-        String s;
-
-        public demo(int a, int b, int c, String s) {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            this.s = s;
-        }
-
-        public int getA() {
-            return a;
-        }
-
-        public void setA(int a) {
-            this.a = a;
-        }
-
-        public int getB() {
-            return b;
-        }
-
-        public void setB(int b) {
-            this.b = b;
-        }
-
-        public int getC() {
-            return c;
-        }
-
-        public void setC(int c) {
-            this.c = c;
-        }
-
-        public String getS() {
-            return s;
-        }
-
-        public void setS(String s) {
-            this.s = s;
-        }
     }
 }
