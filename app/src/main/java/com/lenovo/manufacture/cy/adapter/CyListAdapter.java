@@ -115,19 +115,14 @@ public class CyListAdapter extends BaseAdapter implements View.OnClickListener {
                 manager.notify(1,builder.build());
                 break;
             case R.id.cy_list_tv3:
-
                 sharedPreferences.edit().putString("w",str+"1").apply();//写入filerw文件的w键值对
+                str=sharedPreferences.getString("w","0");
                 break;
             case R.id.cy_list_tv4:
-                holder.cyListTv3.setText(str);
                 str = sharedPreferences.getString("w","0");//读取filerw文件的w键值对，空返回"0"
+                holder.cyListTv3.setText(str);
                 break;
             case R.id.cy_list_btn:
-                holder.cyListTv4.setText(str);
-                holder.cyListBtn.setEnabled(false);
-                holder.cyListBtn.setText("正在准备跳转。。。");
-                try{Thread.sleep(5000);}catch (Exception e){}
-                holder.cyListBtn.setEnabled(true);
                 context.startActivity(new Intent(context,cyActivity.class));
                 break;
         }
