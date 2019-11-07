@@ -18,7 +18,7 @@ public class MyOkHttp {
                 +":" + 8088 + url;
         Request request = new Request.Builder()
                 .url(urls)
-                .post(FormBody.create(MediaType.parse("application/x-www-form-urlencoded"), json))
+                .post(FormBody.create(MediaType.parse("application/json"), json))
                 .build();
         return new JSONObject(new OkHttpClient().newCall(request).execute().body().string());
     }
