@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".cy.activity.cyActivity">
+    android:layout_height="match_parent">
 
+    <RadioGroup
+        android:orientation="horizontal"
+        android:layout_width="956dp"
+        android:layout_height="63dp"
+        android:layout_x="171dp"
+        android:layout_y="57dp" >
+
+        <RadioButton
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:background="@drawable/cybtn"
+            android:text="RadioButton"
+            android:checked="true"/>
+
+        <RadioButton
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:background="@drawable/cybtn"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:background="@drawable/cybtn"
+            android:text="RadioButton" />
+    </RadioGroup>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="1070dp"
+        android:layout_height="520dp"
+        android:layout_x="113dp"
+        android:layout_y="143dp" />
 </AbsoluteLayout>
