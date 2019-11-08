@@ -1,8 +1,14 @@
 package com.lenovo.manufacture.thl.frament;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Build;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,8 +39,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
 
-public class ThlFragment01Fragment extends Fragment {
+
+public class ThlFragment01Fragment extends Fragment implements View.OnClickListener {
     private boolean[] booleans={false,false,false,false};
 
     private TextView text01;
@@ -64,7 +72,9 @@ public class ThlFragment01Fragment extends Fragment {
         Log.d("ThlFragment01Fragment", "2:" + 2);
         application=MainApplication.getInstance();
         text01 = (TextView) view.findViewById(R.id.text_01);
+        text01.setOnClickListener(this);
         text02 = (TextView) view.findViewById(R.id.text_02);
+        text02.setOnClickListener(this);
         text03 = (TextView) view.findViewById(R.id.text_03);
         text03.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +161,7 @@ public class ThlFragment01Fragment extends Fragment {
             }
         });
         text04 = (TextView) view.findViewById(R.id.text_04);
+        text04.setOnClickListener(this);
         list01 = (ListView) view.findViewById(R.id.list_01);
         context=getContext();
         list=new ArrayList<>();
@@ -319,4 +330,26 @@ public class ThlFragment01Fragment extends Fragment {
     };
 
 
+    @TargetApi(Build.VERSION_CODES.O)
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.text_01:
+                @SuppressLint("WrongConstant")
+                NotificationChannel channel=new NotificationChannel("one","Ones",4);
+                NotificationManager notificationManager= (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.createNotificationChannel(channel);
+                Notification notification=new Notification.Builder(getContext(),"one")
+                        .setContentTitle("11111")
+                        .setContentText("22222")
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .build();
+                notificationManager.notify(1,notification);
+                break;
+            case R.id.text_02:
+                break;
+            case R.id.text_04:
+                break;
+        }
+    }
 }
