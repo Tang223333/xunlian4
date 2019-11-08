@@ -91,7 +91,7 @@ public class CyListAdapter extends BaseAdapter implements View.OnClickListener {
             case R.id.cy_list_tv1:
                 AlertDialog.Builder dialog=new AlertDialog.Builder(context)
                         .setTitle("title")
-                        .setMessage("body")
+                        .setMessage("message")
                         .setNegativeButton("Button", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -109,7 +109,7 @@ public class CyListAdapter extends BaseAdapter implements View.OnClickListener {
                 manager.createNotificationChannel(new NotificationChannel("123","asdf",4));//4个等级 4最高，1最低
                 NotificationCompat.Builder builder=new NotificationCompat.Builder(context,"123")
                         .setContentTitle("title")
-                        .setContentText("body")
+                        .setContentText("text")
                         .setContentIntent(pend)
                         .setSmallIcon(R.mipmap.ic_launcher);
                 manager.notify(1,builder.build());
