@@ -1,6 +1,7 @@
 package com.lenovo.manufacture.thl.frament;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
 import android.text.Editable;
@@ -45,6 +46,7 @@ public class ThlFragment01Fragment extends Fragment {
     private List<Car_Yue> list;
     OkHttp okHttp;
     MainApplication application;
+    ProgressDialog progressDialog;
 
     Handler handler=new Handler();
 
@@ -140,6 +142,8 @@ public class ThlFragment01Fragment extends Fragment {
                                 }
                             }.start();
                             dialog.dismiss();
+                            progressDialog=ProgressDialog.show(context,"加载","加载中");
+                            handler.postDelayed(Dialog,2000);
                         }
 
                     }
@@ -252,8 +256,7 @@ public class ThlFragment01Fragment extends Fragment {
                     EditText editText=dialog.getWindow().findViewById(R.id.editText_srje);
                     editText.addTextChangedListener(new TextWatcher() {
                         @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                        }
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
                             if (s.toString().matches("^0")){
@@ -261,8 +264,7 @@ public class ThlFragment01Fragment extends Fragment {
                             }
                         }
                         @Override
-                        public void afterTextChanged(Editable s) {
-                        }
+                        public void afterTextChanged(Editable s) {}
                     });
                     Button button1=dialog.getWindow().findViewById(R.id.btn_qx);
                     button1.setOnClickListener(new View.OnClickListener() {
@@ -282,7 +284,7 @@ public class ThlFragment01Fragment extends Fragment {
                                     @Override
                                     public void run() {
                                         super.run();
-                                        postcz(position,(Integer.parseInt(editText.getText().toString())+1));
+                                        postcz((position+1),Integer.parseInt(editText.getText().toString()));
                                     }
                                 }.start();
                                 list=new ArrayList<>();
@@ -295,12 +297,24 @@ public class ThlFragment01Fragment extends Fragment {
                                     }
                                 }.start();
                                 dialog.dismiss();
+                                progressDialog=ProgressDialog.show(context,"加载","加载中");
+                                handler.postDelayed(Dialog,2000);
                             }
                         }
                     });
                 }
             });
             return view;
+        }
+    };
+
+    public Runnable Dialog=new Runnable() {
+        @Override
+        public void run() {
+            if (progressDialog.isShowing()){
+                progressDialog.dismiss();
+                Toast.makeText(context, "加载成功", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
