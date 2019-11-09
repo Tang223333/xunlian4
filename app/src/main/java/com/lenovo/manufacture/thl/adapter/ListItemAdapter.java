@@ -78,6 +78,7 @@ public class ListItemAdapter extends BaseAdapter {
                 for (int i = 0; i < 4; i++) {
                     application.mBoolean.put(""+i,booleans[i]);
                     Toast.makeText(application, ""+booleans[i]+application.mBoolean.get(""+i), Toast.LENGTH_SHORT).show();
+                    booleans[i]=false;
                 }
 
             }
@@ -136,9 +137,9 @@ public class ListItemAdapter extends BaseAdapter {
 
     protected class ViewHolder {
         private TextView text01;
-    private TextView text02;
-    private CheckBox checkbox01;
-    private Button button01;
+        private TextView text02;
+        private CheckBox checkbox01;
+        private Button button01;
 
         public ViewHolder(View view) {
             text01 = (TextView) view.findViewById(R.id.list_text_01);

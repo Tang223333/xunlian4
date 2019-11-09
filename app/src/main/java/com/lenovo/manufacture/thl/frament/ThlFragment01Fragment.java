@@ -8,6 +8,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.text.Editable;
@@ -31,6 +32,7 @@ import androidx.fragment.app.Fragment;
 import com.lenovo.manufacture.R;
 import com.lenovo.manufacture.thl.MainApplication;
 import com.lenovo.manufacture.thl.OkHttp.OkHttp;
+import com.lenovo.manufacture.thl.Thl_2Activity;
 import com.lenovo.manufacture.thl.adapter.ListItemAdapter;
 import com.lenovo.manufacture.thl.data.Car_Yue;
 
@@ -315,6 +317,9 @@ public class ThlFragment01Fragment extends Fragment implements View.OnClickListe
                     });
                 }
             });
+//            baseAdapter.notifyDataSetChanged();
+//            list01.setFocusable(false);
+//            list01.setSelection(baseAdapter.getCount());
             return view;
         }
     };
@@ -347,6 +352,9 @@ public class ThlFragment01Fragment extends Fragment implements View.OnClickListe
                 notificationManager.notify(1,notification);
                 break;
             case R.id.text_02:
+                Intent intent=new Intent(context, Thl_2Activity.class);
+                startActivity(intent);
+                getActivity().finish();
                 break;
             case R.id.text_04:
                 break;

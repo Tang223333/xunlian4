@@ -5,4 +5,47 @@
     android:layout_height="match_parent"
     android:background="@drawable/abc_vector_test">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!--Button与TextView都可以-->
+        <TextView
+            android:id="@+id/txt_image1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文本"
+            android:textSize="35sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="图标在左"/>
+            <Button
+                android:id="@+id/btn_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="图标在右"/>
+            <Button
+                android:id="@+id/btn_top"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="图标在上"/>
+            <Button
+                android:id="@+id/btn_bottem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="图标在右"/>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
