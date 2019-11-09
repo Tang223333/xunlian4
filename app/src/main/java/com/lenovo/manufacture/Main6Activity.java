@@ -16,16 +16,10 @@ public class Main6Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main6);
 
+    }
 
-
-
-
-
-
-}
-
-    public void btn_jump(View view) {
-        Intent intent=new Intent(Main6Activity.this, D_Main_Activity.class);
+    public void tv_jump(View view) {
+        Intent intent = new Intent(Main6Activity.this, D_Main_Activity.class);
         startActivity(intent);
     }
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="ID" />
+
+        <TextView
+            android:id="@+id/tv_pm25"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="25" />
+
+        <TextView
+            android:id="@+id/tv_co2"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="9630" />
+
+        <TextView
+            android:id="@+id/tv_LightIntensity"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="4030" />
+
+        <TextView
+            android:id="@+id/tv_humidity"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="58" />
+
+        <TextView
+            android:id="@+id/tv_temperature"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="33" />
+
+        <TextView
+            android:id="@+id/tv_RESULT"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="S" />
+
+        <TextView
+            android:id="@+id/tv_ERRMSG"
+            android:layout_width="75dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="成功" />
+
+        <CheckBox
+            android:id="@+id/cb_select"
+            android:layout_width="70dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="充值" />
+    </LinearLayout>
+
+</LinearLayout>

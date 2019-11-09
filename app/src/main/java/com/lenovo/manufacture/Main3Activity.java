@@ -2,6 +2,7 @@ package com.lenovo.manufacture;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -33,6 +34,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
         tv_start_hxfActivity = findViewById(R.id.tv_start_hxfActivity);
         tv_start_hxfActivity.setOnClickListener(this);
         textView = new TextView(this);
+        textView.setBackgroundColor(Color.argb(100,130,202,247));
         textView.setOnClickListener(this);
         textView.setId(0x0003);
         addContentView(textView,new LinearLayout.LayoutParams(Hxf_DemoTestActivity.Width,Hxf_DemoTestActivity.Height));
