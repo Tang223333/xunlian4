@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,11 +31,12 @@ public class ThlFragment03Fragment extends Fragment implements View.OnClickListe
 
 
     private Button btn;
-    int a=1;
+    int a = 1;
     private Drawable drawable;
     private Context context;
-    Handler handler=new Handler();
+    Handler handler = new Handler();
     ProgressDialog progressDialog;
+    private Switch switch01;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,27 +50,29 @@ public class ThlFragment03Fragment extends Fragment implements View.OnClickListe
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
-        drawable=getResources().getDrawable(R.mipmap.ic_launcher);
-        drawable.setBounds(0,0,drawable.getMinimumWidth(),drawable.getMinimumHeight());
-        context=getContext();
+        drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        context = getContext();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initView(View view) {
         btn = (Button) view.findViewById(R.id.btn);
         btn.setOnClickListener(this);
+        //从布局文件中获取switch
+        switch01 = (Switch) view.findViewById(R.id.switch_01);
     }
 
     private void dialog() {
-        Dialog dialog=new Dialog(context);
+        Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_wuliao);
         dialog.show();
-        TextView textView=dialog.getWindow().findViewById(R.id.textview_title);
-        TextView textView1=dialog.getWindow().findViewById(R.id.textview_body);
-        Button button=dialog.getWindow().findViewById(R.id.button_qx);
-        Button button1=dialog.getWindow().findViewById(R.id.button_qr);
-        textView.setText("aaaaaaa"+a);
-        textView1.setText("bbbbbbb"+a);
+        TextView textView = dialog.getWindow().findViewById(R.id.textview_title);
+        TextView textView1 = dialog.getWindow().findViewById(R.id.textview_body);
+        Button button = dialog.getWindow().findViewById(R.id.button_qx);
+        Button button1 = dialog.getWindow().findViewById(R.id.button_qr);
+        textView.setText("aaaaaaa" + a);
+        textView1.setText("bbbbbbb" + a);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,8 +83,8 @@ public class ThlFragment03Fragment extends Fragment implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                progressDialog=ProgressDialog.show(context,"加载","加载中");
-                handler.postDelayed(Dialog,2000);
+                progressDialog = ProgressDialog.show(context, "加载", "加载中");
+                handler.postDelayed(Dialog, 2000);
             }
         });
     }
@@ -88,54 +92,54 @@ public class ThlFragment03Fragment extends Fragment implements View.OnClickListe
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void notification() {
         @SuppressLint("WrongConstant")
-        NotificationChannel notificationChannel=new NotificationChannel(""+a,""+a,a);
-        NotificationManager manager= (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+        NotificationChannel notificationChannel = new NotificationChannel("" + a, "" + a, a);
+        NotificationManager manager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         manager.createNotificationChannel(notificationChannel);
-        Notification notification=new Notification.Builder(context,""+a)
-                .setContentTitle("11111111"+a)
-                .setContentText("222222222"+a)
+        Notification notification = new Notification.Builder(context, "" + a)
+                .setContentTitle("11111111" + a)
+                .setContentText("222222222" + a)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .build();
-        manager.notify(a,notification);
+        manager.notify(a, notification);
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onClick(View v) {
-        Toast.makeText(getContext(), ""+a, Toast.LENGTH_SHORT).show();
-        switch (a){
+        Toast.makeText(getContext(), "" + a, Toast.LENGTH_SHORT).show();
+        switch (a) {
             case 1:
                 notification();
                 dialog();
                 a++;
-                btn.setCompoundDrawables(drawable,null,null,null);
+                btn.setCompoundDrawables(drawable, null, null, null);
                 break;
             case 2:
                 notification();
                 dialog();
                 a++;
-                btn.setCompoundDrawables(null,drawable,null,null);
+                btn.setCompoundDrawables(null, drawable, null, null);
                 break;
             case 3:
                 notification();
                 dialog();
                 a++;
-                btn.setCompoundDrawables(null,null,drawable,null);
+                btn.setCompoundDrawables(null, null, drawable, null);
                 break;
             case 4:
                 notification();
                 dialog();
-                a=1;
-                btn.setCompoundDrawables(null,null,null,drawable);
+                a = 1;
+                btn.setCompoundDrawables(null, null, null, drawable);
                 break;
         }
     }
 
-    private Runnable Dialog=new Runnable() {
+    private Runnable Dialog = new Runnable() {
         @Override
         public void run() {
-            if (progressDialog.isShowing()){
+            if (progressDialog.isShowing()) {
                 Toast.makeText(context, "加载完成", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }

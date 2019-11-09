@@ -47,6 +47,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class ThlFragment01Fragment extends Fragment implements View.OnClickListener {
     private boolean[] booleans={false,false,false,false};
 
+    int b=0;
     private TextView text01;
     private TextView text02;
     private TextView text03;
@@ -197,7 +198,6 @@ public class ThlFragment01Fragment extends Fragment implements View.OnClickListe
         handler.post(new Runnable() {
             @Override
             public void run() {
-                ListItemAdapter listItemAdapter=new ListItemAdapter(context,list);
                 list01.setAdapter(baseAdapter);
             }
         });
@@ -245,6 +245,10 @@ public class ThlFragment01Fragment extends Fragment implements View.OnClickListe
             Button button=view.findViewById(R.id.list_button_01);
             textView.setText(list.get(position).getCar_id()+"");
             textView1.setText(list.get(position).getCar_yue()+"");
+            Log.d("ThlFragment01Fragment", "b:" + b);
+            if (b==1){
+                checkBox.setChecked(true);
+            }
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -254,7 +258,6 @@ public class ThlFragment01Fragment extends Fragment implements View.OnClickListe
                         application.mBoolean.put(""+i,booleans[i]);
                         Toast.makeText(application, ""+booleans[i]+application.mBoolean.get(""+i), Toast.LENGTH_SHORT).show();
                     }
-
                 }
             });
             button.setOnClickListener(new View.OnClickListener() {
@@ -357,6 +360,22 @@ public class ThlFragment01Fragment extends Fragment implements View.OnClickListe
                 getActivity().finish();
                 break;
             case R.id.text_04:
+                if (b==0){
+                    b=1;
+                }else if (b==1){
+                    b=0;
+                }
+                Toast.makeText(context, "b:" + b, Toast.LENGTH_SHORT).show();
+                list=new ArrayList<>();
+                list.clear();
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+                        Log.d("ThlFragment01Fragment", "b:" + b);
+                        post();
+                    }
+                }.start();
                 break;
         }
     }
