@@ -5,12 +5,156 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     tools:context=".hxf.Hxf_DemoTestActivity">
+
     <LinearLayout
         android:id="@+id/layout_father"
-        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="40dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/tv_id"
+                android:layout_width="70dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="ID" />
+
+            <TextView
+                android:id="@+id/tv_pm25"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="pm2.5" />
+
+            <TextView
+                android:id="@+id/tv_co2"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="co2" />
+
+            <TextView
+                android:id="@+id/tv_LightIntensity"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="LightIntensity" />
+
+            <TextView
+                android:id="@+id/tv_humidity"
+                android:layout_width="70dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="humidity" />
+
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="temperature" />
+
+            <TextView
+                android:id="@+id/tv_RESULT"
+                android:layout_width="70dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="RESULT" />
+
+            <TextView
+                android:id="@+id/tv_ERRMSG"
+                android:layout_width="75dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="ERRMSG" />
+
+            <CheckBox
+                android:text="全选"
+                android:id="@+id/cb_select"
+                android:layout_width="70dp"
+                android:layout_height="54dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_addAll"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="批量充值" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_View"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="滚动到顶部"
+                    android:id="@+id/btn_ScrollStart"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:text="停止滚动"
+                    android:id="@+id/btn_ScrollStop"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:text="滚动到底部"
+                    android:id="@+id/btn_ScrollEnd"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
