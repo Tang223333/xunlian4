@@ -10,10 +10,11 @@
 
 
     <TextView
-        android:text="余松柏"
-        android:gravity="center"
-        android:textSize="48sp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:onClick="btn_jump"
+        android:text="余松柏"
+        android:textSize="48sp" />
 
 </LinearLayout>
