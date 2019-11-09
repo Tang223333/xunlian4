@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +18,9 @@ import com.lenovo.manufacture.hxf.Utils.MyOkHttp;
 
 import org.json.JSONObject;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "Hxf_DemoTestActivity";
@@ -27,30 +29,54 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
     private Button button;
     Handler handler = new Handler();
     private JSONObject resultData;
+    private Timer timer;
+    private LinearLayout layout_father;
+    public static int Height;
+    public static int Width;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hxf__demo_test);
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                    textView.setVisibility(View.INVISIBLE);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                postData();
+            }
+        },0,100);
         layoutParams = new LinearLayout
-                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                .LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         addViewToLayout();
-        addContentView(button,layoutParams);
-        addContentView(textView, layoutParams);
+        layout_father.addView(textView);
+        layout_father.addView(button);
 
     }
 
     private void addViewToLayout() {
+        Width = 1;
+        Height = 1;
+        layout_father = findViewById(R.id.layout_father);
+
         //TODO 在布局中动态添加一个TextView
         textView = new TextView(this);
         textView.setGravity(Gravity.CENTER);
         textView.setLayoutParams(layoutParams);
         textView.setText("这是我动态添加的一个TextView");
         textView.setTextColor(Color.BLUE);
+        textView.setTextSize(38);
+        textView.setPadding(50,0,50,80);
 
         button = new Button(this);
         button.setText("请点击我以获取网络数据~");
         button.setId(0x001);
+        button.setLayoutParams(layoutParams);
         button.setOnClickListener(this);
 
     }
@@ -62,26 +88,39 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            JSONObject jsonObject = new JSONObject();
-                            jsonObject.put("UserName","user1");
-                            JSONObject jsonObject1 = MyOkHttp.postData(getApplicationContext(), "GetAllSense.do", jsonObject.toString());
-                            if (jsonObject1!=null){
-                                resultData = jsonObject1;
-                            }else {
-                                Toast.makeText(Hxf_DemoTestActivity.this, "未获取到任何数据！", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            Log.d(TAG, "run: ========" + e);
-                        }
+                        postData();
                     }
                 }).start();
-                textView.setText(resultData.toString()+"");
                 break;
-
-
-
         }
+    }
+
+    private void postData() {
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("UserName","user1");
+            resultData = MyOkHttp.postData(getApplicationContext(), "GetAllSense.do", jsonObject.toString());
+            Log.d(TAG, "postData: ============" + resultData.toString());
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (resultData!=null){
+                        textView.setVisibility(View.VISIBLE);
+                        textView.setText(resultData.toString());
+                    }else {
+                        Toast.makeText(getApplicationContext(), "未从服务器获取到数据！", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "run: ========" + e);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
     }
 }
