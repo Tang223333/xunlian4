@@ -18,6 +18,16 @@ import java.util.Locale;
 import static com.lenovo.manufacture.R.layout.dominator_view_dialog;
 
 public class Main6Activity extends AppCompatActivity {
+    /**
+     *
+     * 每增加一个demo增加一个
+     *  if(wherego.getText().toString().equals("message"))
+     *
+     *
+     *
+     */
+
+
 
     AlertDialog alert=null;
     AlertDialog.Builder builder = null;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lenovo.manufacture">
+
     <!-- 用于访问网络，网络定位需要上网 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 允许程序设置内置sd卡的写权限 -->
@@ -18,8 +19,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dominator.MessageActivity"
-            android:label="Message"/>
+
+
+        <activity
+            android:name=".dominator.MessageActivity"
+            android:label="Message" />
         <activity android:name=".thl.Thl_2Activity" />
         <activity android:name=".cy.activity.cyActivity" />
         <activity android:name=".thl.TangHaiLong_01" />
