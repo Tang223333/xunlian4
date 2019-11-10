@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".thl.Thl_2Activity"></activity>
+        <activity android:name=".dominator.MessageActivity"
+            android:label="Message"/>
+        <activity android:name=".thl.Thl_2Activity" />
         <activity android:name=".cy.activity.cyActivity" />
         <activity android:name=".thl.TangHaiLong_01" />
         <activity android:name=".hxf.Hxf_DemoTestActivity" />
