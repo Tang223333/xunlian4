@@ -2,6 +2,7 @@ package com.lenovo.manufacture;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lenovo.manufacture.hxf.Hxf_DemoTestActivity;
+import com.lenovo.manufacture.hxf.MainApplication;
 
 public class Main3Activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +31,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
 
     @SuppressLint("ResourceType")
     private void initView() {
+
         layout_root = findViewById(R.id.layout_root);
         layout_root.setGravity(Gravity.CENTER);
         tv_start_hxfActivity = findViewById(R.id.tv_start_hxfActivity);

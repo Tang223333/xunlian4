@@ -2,12 +2,10 @@ package com.lenovo.manufacture.hxf;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -32,7 +30,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnClickListener {
-    //    {"pm2.5":293,"co2":5160,"LightIntensity":1503,"humidity":34,"temperature":1,"RESULT":"S","ERRMSG":"成功"}
+
     private static final String TAG = "Hxf_DemoTestActivity";
     private static boolean STATE_REFRESH = true;
     private TextView textView;
@@ -54,6 +52,8 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
     private Button btn_ScrollStop;
     private Button btn_scrollEnd;
     private Button btn_addAll;
+    private Button btn_DeleteFirst;
+    private Button btn_clearDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +100,8 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
         //TODO 可选属性
         rc_view.setItemAnimator(new DefaultItemAnimator());
 
-
         myAdapter = new MyAdapter(this, mData);
-
+        rc_view.setAdapter(myAdapter);
         //TODO 在布局中动态添加一个TextView
         textView = new TextView(this);
         textView.setGravity(Gravity.CENTER);
@@ -121,16 +120,23 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
         linearLayout.setLayoutParams(layoutParams);
 
         button = new Button(this);
+        int btn_id = 0x001;
         button.setText("请点击我以获取网络数据~");
-        button.setId(0x001);
+        button.setId(btn_id);
         button.setLayoutParams(layoutParams);
         button.setOnClickListener(this);
 
         button1 = new Button(this);
+        int btn_id1 = 0x002;
         button1.setText("停止获取网络数据");
-        button1.setId(0x002);
+        button1.setId(btn_id1);
         button1.setLayoutParams(layoutParams);
         button1.setOnClickListener(this);
+
+        btn_clearDisplay = findViewById(R.id.btn_ClearDisplay);
+        btn_clearDisplay.setOnClickListener(this);
+        btn_DeleteFirst = findViewById(R.id.btn_DeleteFirst);
+        btn_DeleteFirst.setOnClickListener(this);
 
         btn_scrollStart = findViewById(R.id.btn_ScrollStart);
         btn_scrollStart.setOnClickListener(this);
@@ -167,6 +173,22 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
                 stopTimer();
                 STATE_REFRESH = false;
                 break;
+            case R.id.btn_ClearDisplay:
+                if (!mData.isEmpty()){
+                    for (int i = mData.size()-1; i > -1; i--) {
+                        mData.remove(i);
+                        myAdapter.notifyItemRemoved(i);
+                    }
+                }
+                myAdapter.notifyDataSetChanged();
+                break;
+            case R.id.btn_DeleteFirst:
+                if (!mData.isEmpty()) {
+                    mData.remove(0);
+                    myAdapter.notifyItemRemoved(0);
+                }
+//                myAdapter.notifyDataSetChanged();
+                break;
             case R.id.btn_ScrollStart:
                 selectStart();
                 break;
@@ -188,22 +210,6 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
             jsonObject.put("UserName", "user1");
             resultData = MyOkHttp.postData(getApplicationContext(), "GetAllSense.do", jsonObject.toString());
             person = new Gson().fromJson(resultData.toString(), Person.class);
-//            person.setPm25(Integer.parseInt(resultData.getString("pm2.5")));
-
-//            person.setCo2(Integer.parseInt(resultData.getString("co2")));
-//            person.setLightIntensity(Integer.parseInt(resultData.getString("LightIntensity")));
-//            person.setHumidity(Integer.parseInt(resultData.getString("humidity")));
-//            person.setTemperature(Integer.parseInt(resultData.getString("temperature")));
-//            person.setRESULT(resultData.getString("RESULT"));
-//            person.setERRMSG(resultData.getString("ERRMSG"));
-
-//            person = new Person(Integer.parseInt(resultData.getString("pm2.5")),
-//                    Integer.parseInt(resultData.getString("co2")),
-//                    Integer.parseInt(resultData.getString("LightIntensity")),
-//                    Integer.parseInt(resultData.getString("humidity")),
-//                    Integer.parseInt(resultData.getString("temperature")),
-//                    resultData.getString("RESULT"),
-//                    resultData.getString("ERRMSG"));
 
             Log.d(TAG, "postData: ============" + resultData.toString());
             handler.post(new Runnable() {
@@ -214,7 +220,6 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
                             textView.setVisibility(View.VISIBLE);
                             textView.setText(resultData.toString());
                             mData.add(Hxf_DemoTestActivity.this.person);
-                            rc_view.setAdapter(myAdapter);
                             myAdapter.notifyDataSetChanged();
 
                             Log.d(TAG, "run: =========" + myAdapter.getItemCount());
@@ -223,15 +228,19 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
                         }
                     } else {
                         selectEnd();
-//                        textView.setVisibility(View.VISIBLE);
                         textView.setText("您已手动停止网络请求！\n(っ °Д °;)っ");
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-//            textView.setVisibility(View.VISIBLE);
-            textView.setText("出错了(っ °Д °;)っ");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //            textView.setVisibility(View.VISIBLE);
+                    textView.setText("网络不见了！\n(っ °Д °;)っ");
+                }
+            });
             Log.d(TAG, "run: ========" + e);
         }
     }

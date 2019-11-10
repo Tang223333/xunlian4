@@ -80,7 +80,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mData.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+   protected class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView mTvId;
         public TextView mTvPm25;
         public TextView mTvCo2;

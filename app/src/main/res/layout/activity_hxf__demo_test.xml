@@ -135,6 +135,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <Button
+                    android:text="清空显示"
+                    android:id="@+id/btn_ClearDisplay"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:text="删除第一条"
+                    android:id="@+id/btn_DeleteFirst"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
                     android:text="滚动到顶部"
                     android:id="@+id/btn_ScrollStart"
                     android:layout_gravity="center"

@@ -14,6 +14,8 @@ import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lenovo.manufacture.hxf.MainApplication;
+
 
 /**
  * @author Amoly
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        initView();
+        initView();
         initWebView();
     }
 
@@ -201,6 +203,11 @@ public class MainActivity extends AppCompatActivity {
 //            mActivity.startActivity(intent);
         }
 
+    }
+    private void initView() {
+        do {
+            MainApplication.getIsOneStartApp();
+        }while (MainApplication.getIsOneStartApp());
     }
 
 }
