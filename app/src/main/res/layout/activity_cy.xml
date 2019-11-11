@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <RadioGroup
+        android:id="@+id/rg"
         android:orientation="horizontal"
         android:layout_width="956dp"
         android:layout_height="63dp"
@@ -43,6 +44,7 @@
     </RadioGroup>
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp"
         android:layout_width="1070dp"
         android:layout_height="520dp"
         android:layout_x="113dp"

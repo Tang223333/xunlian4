@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -112,11 +113,31 @@ public class CyListAdapter extends BaseAdapter implements View.OnClickListener {
                         .setContentText("text")
                         .setContentIntent(pend)
                         .setSmallIcon(R.mipmap.ic_launcher);
-                manager.notify(1,builder.build());
+                manager.notify((int)(Math.random()*10000),builder.build());
                 break;
             case R.id.cy_list_tv3:
+
                 sharedPreferences.edit().putString("w",str+"1").apply();//写入filerw文件的w键值对
                 str=sharedPreferences.getString("w","0");
+                //进度条弹框
+                ProgressDialog pdialog=new ProgressDialog(context);
+                pdialog.setTitle("title");
+                pdialog.setMessage("message");
+                pdialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                pdialog.setMax(100);
+                pdialog.show();
+                pdialog.setCancelable(false);
+                new Thread(new Runnable() {//两秒后关闭
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        pdialog.dismiss();
+                    }
+                }).start();
                 break;
             case R.id.cy_list_tv4:
                 str = sharedPreferences.getString("w","0");//读取filerw文件的w键值对，空返回"0"
