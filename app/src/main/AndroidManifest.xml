@@ -11,6 +11,7 @@
 
     <application
         android:name=".hxf.Utils.MainApplication"
+        android:name=".hyx.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,13 +20,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".hxf.MyActivity.Hxf_ViewPagerActivity"></activity>
+        <activity android:name=".hyx.activity.MediaplayActivity">
+        </activity>
+        <activity android:name=".hyx.activity.DownActivityh" />
+        <activity android:name=".hyx.activity.ViewPageActivity" />
+        <activity android:name=".cy.activity.cyActivity" />
         <activity
             android:name=".dominator.MessageActivity"
             android:label="Message" />
         <activity android:name=".thl.Thl_2Activity" />
         <activity android:name=".cy.activity.cyActivity" />
         <activity android:name=".thl.TangHaiLong_01" />
-        <activity android:name=".hxf.MyActivity.Hxf_NetworkDataRequestActivity" />
+        <activity android:name=".hxf.Hxf_DemoTestActivity" />
         <activity android:name=".Main8Activity" />
         <activity android:name=".Main7Activity" />
         <activity android:name=".Main6Activity" />
