@@ -9,8 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <!--    android:name=".hxf.Utils.MainApplication"-->
     <application
-        android:name=".hxf.Utils.MainApplication"
+
         android:name=".hyx.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,8 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".hxf.MyActivity.Hxf_ViewPagerActivity"></activity>
-        <activity android:name=".hyx.activity.MediaplayActivity">
-        </activity>
+        <activity android:name=".hyx.activity.MediaplayActivity"></activity>
         <activity android:name=".hyx.activity.DownActivityh" />
         <activity android:name=".hyx.activity.ViewPageActivity" />
         <activity android:name=".cy.activity.cyActivity" />
@@ -29,9 +29,8 @@
             android:name=".dominator.MessageActivity"
             android:label="Message" />
         <activity android:name=".thl.Thl_2Activity" />
-        <activity android:name=".cy.activity.cyActivity" />
         <activity android:name=".thl.TangHaiLong_01" />
-        <activity android:name=".hxf.Hxf_DemoTestActivity" />
+        <activity android:name=".hxf.MyActivity.Hxf_NetworkDataRequestActivity" />
         <activity android:name=".Main8Activity" />
         <activity android:name=".Main7Activity" />
         <activity android:name=".Main6Activity" />
@@ -39,6 +38,7 @@
         <activity android:name=".Main4Activity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".Main2Activity" />
+        <activity android:name=".Main1Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

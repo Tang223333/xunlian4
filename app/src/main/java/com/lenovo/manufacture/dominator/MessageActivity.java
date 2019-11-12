@@ -39,8 +39,8 @@ ViewFlipper flipper;
         }
 
         Animation[] animation=new Animation[2];
-        animation[0]= AnimationUtils.loadAnimation(this,R.anim.dominator_right_in);
-        animation[1]= AnimationUtils.loadAnimation(this,R.anim.dominator_right_out);
+        animation[0]= AnimationUtils.loadAnimation(this,R.anim.ysb_right_in);
+        animation[1]= AnimationUtils.loadAnimation(this,R.anim.ysb_right_out);
 
         flipper.setInAnimation(animation[0]);
         flipper.setOutAnimation(animation[1]);

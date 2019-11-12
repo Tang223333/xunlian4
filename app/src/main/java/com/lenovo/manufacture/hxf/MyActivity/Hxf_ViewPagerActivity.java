@@ -15,7 +15,6 @@ import com.lenovo.manufacture.R;
 import com.lenovo.manufacture.hxf.Utils.GetPhoneInfo;
 import com.lenovo.manufacture.hxf.adapter.MyViewPagerAdapter;
 
-import java.text.BreakIterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hxf__view_pager);
+        setContentView(R.layout.activity_hxf_view_pager);
         initView();
         List<View> viewList = new LinkedList<>();
 
@@ -38,6 +37,8 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity {
 
         MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(viewList);
         viewPager.setAdapter(myViewPagerAdapter);
+        //TODO 设置当前页码，即打开翻页视图时默认显示哪一个页面
+        viewPager.setCurrentItem(1);
 
     }
     public void getPhoneInfo(Context context) {

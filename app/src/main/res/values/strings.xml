@@ -3,5 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--//TODO：获取屏幕信息的占位符-->
     <string name="phone_Info">当前设备屏幕信息如下所示：\n    像素密度：%1$s ，宽度：%2$s px，高度：%3$s px</string>
 </resources>
