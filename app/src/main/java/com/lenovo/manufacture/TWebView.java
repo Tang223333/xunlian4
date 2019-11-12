@@ -30,6 +30,7 @@ public class TWebView extends WebView {
 
     @SuppressLint("SetJavaScriptEnabled")
     public TWebView(Context arg0, AttributeSet arg1) {
+
         super(arg0, arg1);
         this.setWebViewClient(client);
         setClickable(true);
