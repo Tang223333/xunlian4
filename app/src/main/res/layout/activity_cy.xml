@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0F0">
 
     <RadioGroup
         android:id="@+id/rg"
-        android:orientation="horizontal"
         android:layout_width="956dp"
         android:layout_height="63dp"
         android:layout_x="171dp"
-        android:layout_y="57dp" >
+        android:layout_y="57dp"
+        android:orientation="horizontal">
 
         <RadioButton
-            android:gravity="center"
-            android:layout_weight="1"
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:button="@null"
-            android:background="@drawable/cybtn"
-            android:text="RadioButton"
-            android:checked="true"/>
-
-        <RadioButton
-            android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:button="@null"
             android:background="@drawable/cybtn"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
             android:text="RadioButton" />
 
         <RadioButton
-            android:gravity="center"
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/cybtn"
+            android:button="@null"
+            android:gravity="center"
+            android:text="RadioButton" />
+
+        <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:button="@null"
+            android:layout_weight="1"
             android:background="@drawable/cybtn"
+            android:button="@null"
+            android:gravity="center"
             android:text="RadioButton" />
     </RadioGroup>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp"
         android:layout_width="1070dp"
-        android:layout_height="520dp"
+        android:layout_height="400dp"
         android:layout_x="113dp"
         android:layout_y="143dp" />
+
+
 </AbsoluteLayout>

@@ -1,10 +1,11 @@
-package com.lenovo.manufacture.hxf;
+package com.lenovo.manufacture.hxf.MyActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +22,7 @@ import com.google.gson.Gson;
 import com.lenovo.manufacture.R;
 import com.lenovo.manufacture.hxf.Bean.Person;
 import com.lenovo.manufacture.hxf.Utils.MyOkHttp;
-import com.lenovo.manufacture.hxf.adapter.MyAdapter;
+import com.lenovo.manufacture.hxf.adapter.MyRcViewAdapter;
 
 import org.json.JSONObject;
 
@@ -29,9 +31,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnClickListener {
+public class Hxf_NetworkDataRequestActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "Hxf_DemoTestActivity";
+    private static final String TAG = "Hxf_NetworkDataRequestActivity";
     private static boolean STATE_REFRESH = true;
     private TextView textView;
     private LinearLayout.LayoutParams layoutParams;
@@ -46,7 +48,7 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
     private RecyclerView rc_view;
     private Person person = new Person();
     private List<Person> mData = new LinkedList<>();
-    private MyAdapter myAdapter;
+    private MyRcViewAdapter myAdapter;
     private LinearLayout linearLayout;
     private Button btn_scrollStart;
     private Button btn_ScrollStop;
@@ -54,16 +56,27 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
     private Button btn_addAll;
     private Button btn_DeleteFirst;
     private Button btn_clearDisplay;
+    private ScrollView scrollView;
+    private Timer timer1;
+    private Timer timer2;
+    private Timer timer3;
+    private Timer timer4;
+    private Timer timer5;
+    private Timer timer6;
+    private Timer timer7;
+    private Timer timer8;
+    private Timer timer9;
+    private Timer timer10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hxf__demo_test);
+        setContentView(R.layout.activity_hxf__network_data_request);
         startTimer();
         layoutParams = new LinearLayout
                 .LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         addViewToLayout();
-        layout_father.addView(textView);
+        layout_father.addView(scrollView);
         linearLayout.addView(button);
         linearLayout.addView(button1);
         layout_father.addView(linearLayout);
@@ -82,12 +95,115 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
                 }
                 postData();
             }
-        }, 0, 100);
+        }, 0, 1);
+
+        timer1 = new Timer();
+        timer1.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer2 = new Timer();
+        timer2.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer3 = new Timer();
+        timer3.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+
+        timer4 = new Timer();
+        timer4.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer5 = new Timer();
+        timer5.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer6 = new Timer();
+        timer6.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer7 = new Timer();
+        timer7.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer8 = new Timer();
+        timer8.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer9 = new Timer();
+        timer9.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+        timer10 = new Timer();
+        timer10.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                postData();
+            }
+        }, 0, 1);
+
     }
 
     private void stopTimer() {
         if (timer != null) {
             timer.cancel();
+        }
+        if (timer1!= null) {
+            timer1.cancel();
+        }
+        if (timer2 != null) {
+            timer2.cancel();
+        }
+        if (timer3 != null) {
+            timer3.cancel();
+        }
+        if (timer4 != null) {
+            timer4.cancel();
+        }
+        if (timer5 != null) {
+            timer5.cancel();
+        }
+        if (timer6 != null) {
+            timer6.cancel();
+        }
+        if (timer7 != null) {
+            timer7.cancel();
+        }
+        if (timer8 != null) {
+            timer8.cancel();
+        }
+        if (timer9 != null) {
+            timer9.cancel();
+        }
+        if (timer10 != null) {
+            timer10.cancel();
         }
     }
 
@@ -100,8 +216,9 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
         //TODO 可选属性
         rc_view.setItemAnimator(new DefaultItemAnimator());
 
-        myAdapter = new MyAdapter(this, mData);
+        myAdapter = new MyRcViewAdapter(this, mData);
         rc_view.setAdapter(myAdapter);
+
         //TODO 在布局中动态添加一个TextView
         textView = new TextView(this);
         textView.setGravity(Gravity.CENTER);
@@ -114,6 +231,10 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
         textView.onCheckIsTextEditor();
         textView.setSelectAllOnFocus(true);
         textView.setPadding(50, 0, 50, 80);
+
+        scrollView = new ScrollView(this);
+        scrollView.setLayoutParams(new LinearLayout.LayoutParams(500,900));
+        scrollView.addView(textView);
 
         linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -148,9 +269,9 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
         btn_addAll = findViewById(R.id.btn_addAll);
         btn_addAll.setOnClickListener(this);
 
-
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -213,13 +334,14 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
 
             Log.d(TAG, "postData: ============" + resultData.toString());
             handler.post(new Runnable() {
+                @SuppressLint("LongLogTag")
                 @Override
                 public void run() {
                     if (STATE_REFRESH) {
                         if (resultData != null) {
                             textView.setVisibility(View.VISIBLE);
                             textView.setText(resultData.toString());
-                            mData.add(Hxf_DemoTestActivity.this.person);
+                            mData.add(Hxf_NetworkDataRequestActivity.this.person);
                             myAdapter.notifyDataSetChanged();
 
                             Log.d(TAG, "run: =========" + myAdapter.getItemCount());
@@ -246,15 +368,17 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void selectStart() {
+        //TODO 滚动到RecycleView的顶部
         rc_view.smoothScrollToPosition(0);
     }
 
     private void stopScroll() {
+        //TODO 停止滚动
         rc_view.stopScroll();
     }
 
     private void selectEnd() {
-        //TODO 滑动到RecycleView的底部
+        //TODO 滚动到RecycleView的底部
         rc_view.smoothScrollToPosition(myAdapter.getItemCount());
     }
 
@@ -263,4 +387,5 @@ public class Hxf_DemoTestActivity extends AppCompatActivity implements View.OnCl
         super.onPause();
         stopTimer();
     }
+
 }

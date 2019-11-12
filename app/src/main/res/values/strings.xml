@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">移动互联训练</string>
+    <string name="phone_Info">当前设备屏幕信息如下所示：\n    像素密度：%1$s ，宽度：%2$s px，高度：%3$s px</string>
 </resources>

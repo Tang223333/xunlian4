@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lenovo.manufacture.R;
 import com.lenovo.manufacture.hxf.Bean.Person;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyRcViewAdapter extends RecyclerView.Adapter<MyRcViewAdapter.MyViewHolder> {
     private static final String TAG = "MyAdapter";
     private Context context;
     private List<Person> mData = new LinkedList<>();
@@ -33,24 +33,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return checkedList;
     }
 
-    public MyAdapter() {
+    public MyRcViewAdapter() {
     }
 
-    public MyAdapter(Context context, List<Person> mData) {
+    public MyRcViewAdapter(Context context, List<Person> mData) {
         this.context = context;
         this.mData = mData;
     }
 
     @NonNull
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyRcViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(context)
                 .inflate(R.layout.hxf_rc_item, parent, false);
         return new MyViewHolder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyRcViewAdapter.MyViewHolder holder, int position) {
         Person person = mData.get(position);
         holder.mTvId.setText(position+1+ "");
         holder.mTvPm25.setText(person.getPm25() + "");

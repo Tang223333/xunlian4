@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".hxf.Hxf_DemoTestActivity">
+    tools:context=".hxf.MyActivity.Hxf_NetworkDataRequestActivity">
 
     <LinearLayout
         android:id="@+id/layout_father"

@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.lenovo.manufacture.hxf.MainApplication;
+import com.lenovo.manufacture.hxf.Utils.MainApplication;
 
 
 /**
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+//        initView();
         initWebView();
     }
 
@@ -206,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initView() {
         do {
+            //TODO 获取是否为第一次启动APP（具体操作请查看源码）
             MainApplication.getIsOneStartApp();
         }while (MainApplication.getIsOneStartApp());
     }

@@ -1,8 +1,10 @@
-package com.lenovo.manufacture.hxf;
+package com.lenovo.manufacture.hxf.Utils;
 
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
+import com.lenovo.manufacture.hxf.MyActivity.Hxf_NetworkDataRequestActivity;
 
 import java.util.HashMap;
 
@@ -20,7 +22,7 @@ public class MainApplication extends Application {
         SharedPreferences sharedPreferences = getInstance().getSharedPreferences("isOneStartApp",0);
         if (sharedPreferences.getBoolean("isOne",true)){
             sharedPreferences.edit().putBoolean("isOne",false).apply();
-            Intent intent = new Intent(getInstance(), Hxf_DemoTestActivity.class);
+            Intent intent = new Intent(getInstance(), Hxf_NetworkDataRequestActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
             getInstance().startActivity(intent);
             return true;
