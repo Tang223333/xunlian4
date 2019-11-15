@@ -33,7 +33,6 @@
         <activity android:name=".hyx.activity.ServiceActivity"></activity>
         <activity android:name=".hyx.activity.MediaplayActivity" />
         <activity android:name=".hxf.MyActivity.Hxf_ViewPagerActivity"></activity>
-        <activity android:name=".hyx.activity.MediaplayActivity"></activity>
         <activity android:name=".hyx.activity.DownActivityh" />
         <activity android:name=".hyx.activity.ViewPageActivity" />
         <activity android:name=".cy.activity.cyActivity" />
