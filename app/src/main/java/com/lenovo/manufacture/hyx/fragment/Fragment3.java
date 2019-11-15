@@ -53,7 +53,7 @@ public class Fragment3 extends Fragment {
 //                Log.d(TAG, "run: "+Thread.currentThread().getName());
 //            }
 //        }).start();
-//        Toast.makeText(getContext(), list.get(0).toString(), Toast.LENGTH_SHORT).show();
+//        TimerTask.makeText(getContext(), list.get(0).toString(), TimerTask.LENGTH_SHORT).show();
 
     }
 
@@ -95,7 +95,7 @@ public class Fragment3 extends Fragment {
 //                }.start();
 //            }
 //        });
-////        Timer timer = new Timer();
+////        TimerTask timer = new TimerTask();
 ////        timer.schedule(new TimerTask() {
 ////            @Override
 ////            public void run() {

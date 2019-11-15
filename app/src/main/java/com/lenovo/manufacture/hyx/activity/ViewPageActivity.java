@@ -66,13 +66,13 @@ public class ViewPageActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position){
                     case 0:
-//                        Toast.makeText(ViewPageActivity.this, position, Toast.LENGTH_SHORT).show();
+//                        TimerTask.makeText(ViewPageActivity.this, position, TimerTask.LENGTH_SHORT).show();
                         break;
                     case 1:
-//                        Toast.makeText(ViewPageActivity.this, position, Toast.LENGTH_SHORT).show();
+//                        TimerTask.makeText(ViewPageActivity.this, position, TimerTask.LENGTH_SHORT).show();
                         break;
                     case 2:
-//                        Toast.makeText(ViewPageActivity.this, position, Toast.LENGTH_SHORT).show();
+//                        TimerTask.makeText(ViewPageActivity.this, position, TimerTask.LENGTH_SHORT).show();
                         break;
                 }
             }
