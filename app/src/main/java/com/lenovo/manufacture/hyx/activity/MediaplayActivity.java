@@ -32,6 +32,7 @@ public class MediaplayActivity extends AppCompatActivity {
     private int t=0;
     int j=t;
     private int currentPosition;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +47,12 @@ public class MediaplayActivity extends AppCompatActivity {
         bar = (AppCompatSeekBar) findViewById(R.id.bar);
         wti = (TextView) findViewById(R.id.wti);
         play = (ImageView) findViewById(R.id.play);
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 if (mediaPlayer==null){
-//                    mediaPlayer = MediaPlayer.create(MediaplayActivity.this,R.raw.ge);
+                    mediaPlayer = MediaPlayer.create(MediaplayActivity.this,R.raw.ge);
                 }
                 int duration = mediaPlayer.getDuration();
                 int only = duration/100;
@@ -112,7 +113,7 @@ public class MediaplayActivity extends AppCompatActivity {
                     }
                 });
             }
-        },0,100);
+        },0,1000);
 
     }
     public String gettime(int duration){
@@ -120,4 +121,11 @@ public class MediaplayActivity extends AppCompatActivity {
         int s = m/60;
         return s+":"+(m-s*60)+"";
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timer.cancel();
+    }
+
 }

@@ -1,11 +1,13 @@
 package com.lenovo.manufacture.hyx.activity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -14,7 +16,7 @@ import com.lenovo.manufacture.R;
 
 public class DownActivityh extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    private TextView mText;
+
 
     private SwipeRefreshLayout mSwiper;
     private Handler handler = new Handler();
@@ -26,29 +28,24 @@ public class DownActivityh extends AppCompatActivity implements SwipeRefreshLayo
         initView();
     }
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint({"ResourceAsColor", "ResourceType"})
     private void initView() {
-        mText = (TextView) findViewById(R.id.text);
         mSwiper = (SwipeRefreshLayout) findViewById(R.id.swiper);
-        mSwiper.setOnRefreshListener(this);
-        mSwiper.setColorScheme(android.R.color.holo_blue_light, android.R.color.holo_green_light,
-                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        mSwiper.setOnRefreshListener(this);//设置下拉监听
+        mSwiper.setColorSchemeColors(Color.RED, Color.BLACK,
+                Color.YELLOW, Color.BLUE);//设置图标刷新中的颜色
     }
 
     @Override
     public void onRefresh() {
-        mText.setVisibility(View.VISIBLE);
-        mText.setText("正在刷新");
-
-        handler.postDelayed(runnable,2000);
+        Toast.makeText(DownActivityh.this, "正在刷新", Toast.LENGTH_SHORT).show();
+        handler.postDelayed(runnable,5000);
     }
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            mText.setText("刷新完成");
-
-            mText.setVisibility(View.GONE);
-            mSwiper.setRefreshing(false);
+            mSwiper.setRefreshing(false);//设置图标隐藏
+            Toast.makeText(DownActivityh.this, "刷新成功", Toast.LENGTH_SHORT).show();
         }
     };
 }
