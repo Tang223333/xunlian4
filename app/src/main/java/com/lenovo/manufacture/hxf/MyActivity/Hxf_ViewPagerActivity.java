@@ -64,6 +64,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private TextView tv_viewPager02;
     private TextView tv_viewPager03;
     private List<View> tabViewList;
+    private LinearLayout layout_topTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +115,12 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         tabViewList.add(tv_viewPager01);
         tabViewList.add(tv_viewPager02);
         tabViewList.add(tv_viewPager03);
+
+        layout_topTab = findViewById(R.id.layout_topTab);
+        layout_topTab.removeAllViews();
+        layout_topTab.addView(tv_viewPager01);
+        layout_topTab.addView(tv_viewPager02);
+        layout_topTab.addView(tv_viewPager03);
 
         String[] stringArray = getResources().getStringArray(R.array.viewPagerTab);
 
@@ -242,6 +249,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
             case R.id.btn_startFlip:
                 timer.cancel();
                 removeAllView();
+                layout_viewPager_father.addView(layout_topTab);
                 layout_viewPager_father.addView(viewPager);
                 initViewPager();
                 initTimer();
