@@ -11,67 +11,116 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
+        android:textColor="#E77A4E"
         android:textSize="38sp" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0FF">
+        android:background="#0FF"
+        android:orientation="horizontal">
+
         <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
             <Button
                 android:id="@+id/btn_playMusic"
-                android:text="播放音乐"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="播放音乐" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/layout_viewPager_father"
             android:layout_width="750dp"
-            android:layout_height="500dp">
+            android:layout_height="500dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_topTab"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_viewPager01"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#FFF"
+                    android:gravity="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/tv_viewPager02"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#F8F7F7"
+                    android:gravity="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/tv_viewPager03"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#FFF"
+                    android:gravity="center"
+                    android:textColor="#03A9F4"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.viewpager.widget.PagerTitleStrip
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:background="#0F0" />
+                <!--                <androidx.viewpager.widget.PagerTitleStrip-->
+                <!--                    android:id="@+id/viewPager_title"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="60dp"-->
+                <!--                    android:background="#0F0"-->
+                <!--                    android:paddingTop="20dp"-->
+                <!--                    android:paddingBottom="20dp" />-->
+
                 <androidx.viewpager.widget.PagerTabStrip
+                    android:id="@+id/viewPager_tab"
                     android:layout_width="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
                     android:layout_height="50dp"
-                    android:background="#F0F" />
+                    android:background="#F0F"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp" />
 
             </androidx.viewpager.widget.ViewPager>
         </LinearLayout>
 
         <LinearLayout
-            android:gravity="center"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:gravity="center">
+
             <Button
                 android:id="@+id/btn_startFlip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="开始轮播" />
+
             <Button
                 android:id="@+id/btn_stopFlip"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:text="停止轮播" />
+
             <Button
                 android:id="@+id/btn_playVideo"
                 android:layout_width="wrap_content"
