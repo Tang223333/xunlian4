@@ -8,10 +8,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
@@ -79,6 +79,8 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     protected void onPause() {
         super.onPause();
         timer.cancel();
+        mediaPlayer.reset();
+        mediaPlayer.release();
     }
 
     private void initTimer() {
@@ -112,6 +114,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         tv_viewPager01 = findViewById(R.id.tv_viewPager01);
         tv_viewPager02 = findViewById(R.id.tv_viewPager02);
         tv_viewPager03 = findViewById(R.id.tv_viewPager03);
+
         tabViewList.add(tv_viewPager01);
         tabViewList.add(tv_viewPager02);
         tabViewList.add(tv_viewPager03);
@@ -165,11 +168,10 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         mBtnPlayVideo.setOnClickListener(this);
         layout_viewPager_father = findViewById(R.id.layout_viewPager_father);
         layout_viewPager_father.setBackgroundColor(Color.rgb(0, 0, 0));
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ge);
         videoView = new VideoView(this);
-        initViewPager();
         View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_custom_dialog, null, false);
         customDialogShow(inflate, R.mipmap.icon, getString(R.string.dialog_title), getString(R.string.dialog_content));
-
     }
 
     private void initDialog(View view) {
@@ -188,8 +190,11 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         initDialog(layout);
         if (dialog_icon != 0) {
             mIvDialogIcon.setBackgroundResource(dialog_icon);
+
         }
-        mTvDialogTitle.setText(dialog_title);
+        if (!dialog_title.isEmpty()) {
+            mTvDialogTitle.setText(dialog_title);
+        }
         if (!dialog_content.isEmpty()) {
             mTvDialogContent.setText(dialog_content);
         }
@@ -214,12 +219,12 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         currentItem = position;
         for (int i = 0; i < tabViewList.size(); i++) {
             TextView view = (TextView) tabViewList.get(i);
-            view.setTextColor(Color.rgb(3,168,244));
+            view.setTextColor(Color.rgb(3, 168, 244));
             view.setBackgroundColor(Color.WHITE);
         }
         TextView textView = (TextView) tabViewList.get(position);
-        textView.setTextColor(Color.rgb(255,87,34));
-        textView.setBackgroundColor(Color.rgb(187,187,187));
+        textView.setTextColor(Color.rgb(255, 87, 34));
+        textView.setBackgroundColor(Color.rgb(187, 187, 187));
 
 //        //TODO  设置viewPagerTitleStrip的文字大小
 //        mViewPagerTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
@@ -241,10 +246,11 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_playMusic:
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ge);
-                mediaPlayer.start();
-                View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_custom_dialog, null, false);
-                customDialogShow(inflate, R.mipmap.icon, getString(R.string.dialog_title), getString(R.string.dialog_content));
+                playMusic();
+                if (!dialog.isShowing()) {
+                    View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_custom_dialog, null, false);
+                    customDialogShow(inflate, R.mipmap.icon, getString(R.string.dialog_title), getString(R.string.dialog_content));
+                }
                 break;
             case R.id.btn_startFlip:
                 timer.cancel();
@@ -257,13 +263,20 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
             case R.id.btn_stopFlip:
                 timer.cancel();
                 break;
-
             case R.id.btn_playVideo:
-                layout_viewPager_father.setPadding(5, 40, 5, 40);
+                layout_viewPager_father.setPadding(5, 60, 5, 40);
                 removeAllView();
                 videoView = new VideoView(this);
-                layout_viewPager_father.addView(videoView);
-                //TODO 设置音频文件
+//                layout_viewPager_father.addView(videoView);
+
+                //TODO 对话框式视频播放器
+                View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_blank_dialog, null, false);
+                customDialogShow(inflate,0,"","");
+                FrameLayout layout_dialogVideo_father = inflate.findViewById(R.id.layout_dialogVideo_father);
+                layout_dialogVideo_father.removeAllViews();
+                layout_dialogVideo_father.addView(videoView);
+
+                //TODO 设置视频文件
                 videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.pm));
                 //TODO 设置控制条
                 videoView.setMediaController(new MediaController(this));
@@ -283,6 +296,18 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
                 break;
             default:
                 break;
+        }
+    }
+
+    private void playMusic() {
+        if (!mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+//                    mBtnPlayMusic.setText("暂停播放");
+            mBtnPlayMusic.setBackgroundResource(R.mipmap.play);
+        } else {
+            mediaPlayer.pause();
+//                    mBtnPlayMusic.setText("播放音乐");
+            mBtnPlayMusic.setBackgroundResource(R.mipmap.timeout);
         }
     }
 
