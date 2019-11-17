@@ -55,7 +55,7 @@ public class cyActivity extends AppCompatActivity implements RadioGroup.OnChecke
         vp = (ViewPager) findViewById(R.id.vp);
         vp.setAdapter(new CyFragmentAdapter(getSupportFragmentManager(),list));
         vp.setOnPageChangeListener(this);
-//        player=MediaPlayer.create(getApplicationContext(),R.raw.ge);
+        player=MediaPlayer.create(getApplicationContext(),R.raw.jskw);
         player.start();
         if (!player.isPlaying()){
             player.reset();

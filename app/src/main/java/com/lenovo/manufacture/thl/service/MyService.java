@@ -16,15 +16,15 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-//        player=MediaPlayer.create(getApplicationContext(),R.raw.jskw);
-//        player.start();
+        player=MediaPlayer.create(getApplicationContext(),R.raw.jskw);
+        player.start();
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        player.pause();
+        player.pause();
     }
 
     @Override

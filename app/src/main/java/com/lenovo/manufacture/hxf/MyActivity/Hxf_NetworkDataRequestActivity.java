@@ -325,6 +325,7 @@ public class Hxf_NetworkDataRequestActivity extends AppCompatActivity implements
         }
     }
 
+    @SuppressLint("LongLogTag")
     private void postData() {
         try {
             JSONObject jsonObject = new JSONObject();
