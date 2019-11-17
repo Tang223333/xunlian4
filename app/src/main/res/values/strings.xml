@@ -10,5 +10,14 @@
     <!--//TODO：dialog的标题和正文内容-->
     <string name="dialog_title">今日头疼</string>
     <string name="dialog_content">今天我的头疼得很呐！</string>
-
+    <string-array name="thl_spinner">
+        <item>不显示分隔线(分隔线高度为0)</item>
+        <item>不显示分隔线(分隔线为null)</item>
+        <item>只显示内部分隔线(先设置分隔线高度)</item>
+        <item>只显示内部分隔线(后设置分隔线高度)</item>
+        <item>显示底部分隔线(高度是wrap_content)</item>
+        <item>显示底部分隔线(高度是match_parent)</item>
+        <item>显示顶部分隔线(别瞎折腾了，显示不了)</item>
+        <item>显示全部分隔线(看我用padding大法)</item>
+    </string-array>
 </resources>

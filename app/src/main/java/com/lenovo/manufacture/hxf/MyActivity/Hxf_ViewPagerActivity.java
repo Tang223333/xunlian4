@@ -74,7 +74,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private List<View> tabViewList;
     private LinearLayout layout_topTab;
     private FrameLayout layout_dialogVideo_father;
-    private String resource = String.valueOf(R.raw.pm);
+//    private String resource = String.valueOf(R.raw.pm);
     private MediaController mediaController;
 
     @Override
@@ -185,7 +185,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
 
         layout_viewPager_father = findViewById(R.id.layout_viewPager_father);
         layout_viewPager_father.setBackgroundColor(Color.rgb(0, 0, 0));
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ge);
+//        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ge);
         videoView = new CustomVideoView(this);
 //        videoView = new VideoView(this);
         //TODO 设置播放结束的监听器
@@ -193,12 +193,12 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 在准备好的侦听器上设置
         videoView.setOnPreparedListener(this);
         videoResource = new LinkedList<>();
-        videoResource.add(R.raw.pm3);
-        videoResource.add(R.raw.pm);
-        videoResource.add(R.raw.pm1);
-        videoResource.add(R.raw.pm2);
-        videoResource.add(R.raw.pm3);
-        videoResource.add(R.raw.pm2);
+//        videoResource.add(R.raw.pm3);
+//        videoResource.add(R.raw.pm);
+//        videoResource.add(R.raw.pm1);
+//        videoResource.add(R.raw.pm2);
+//        videoResource.add(R.raw.pm3);
+//        videoResource.add(R.raw.pm2);
         View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_custom_dialog, null, false);
         customDialogShow(inflate, R.mipmap.icon, getString(R.string.dialog_title), getString(R.string.dialog_content));
         //TODO 创建媒体控制器
@@ -358,7 +358,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 上一个视频
         currentVideo = (Math.abs((currentVideo - 1) % videoResource.size()));
         log.d("", String.valueOf(currentVideo));
-        resource = String.valueOf(videoResource.get(currentVideo));
+//        resource = String.valueOf(videoResource.get(currentVideo));
         videoView.start();
     }
 
@@ -366,7 +366,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 下一个视频
         currentVideo = (currentVideo + 1) % videoResource.size();
         log.d("", String.valueOf(currentVideo));
-        resource = String.valueOf(videoResource.get(currentVideo));
+//        resource = String.valueOf(videoResource.get(currentVideo));
         videoView.start();
     }
 
@@ -418,7 +418,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
 
     private void setVideoResource() {
         //TODO 设置视频文件
-        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + resource));
+//        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + resource));
         //TODO 设置媒体控制器
         videoView.setMediaController(mediaController);
         videoView.start();

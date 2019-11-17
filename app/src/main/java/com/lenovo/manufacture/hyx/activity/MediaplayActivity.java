@@ -58,7 +58,7 @@ public class MediaplayActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (mediaPlayer==null){
-                    mediaPlayer = MediaPlayer.create(MediaplayActivity.this,R.raw.ge);
+//                    mediaPlayer = MediaPlayer.create(MediaplayActivity.this,R.raw.ge);
                 }
                 int duration = mediaPlayer.getDuration();
                 int only = duration/100;
