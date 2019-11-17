@@ -8,7 +8,6 @@ import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 
 public class Ok {
     public static JSONObject Post(Context context,String url,String json) throws Exception{
