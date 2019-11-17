@@ -1,6 +1,9 @@
 package com.lenovo.manufacture.cy.activity;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -16,6 +19,8 @@ import com.lenovo.manufacture.cy.fragment.CyFragment3Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class cyActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener {
 
@@ -25,12 +30,18 @@ public class cyActivity extends AppCompatActivity implements RadioGroup.OnChecke
     private ViewPager vp;
     private RadioGroup rg;
     private List<Fragment> list=new ArrayList<Fragment>();
+    private MediaPlayer player;
+    private Timer timer=new Timer();
+    private Handler handler=new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cy);
         initView();
     }
+
+
 
     private void initView() {
         radioButton = (RadioButton) findViewById(R.id.radioButton);
@@ -44,6 +55,39 @@ public class cyActivity extends AppCompatActivity implements RadioGroup.OnChecke
         vp = (ViewPager) findViewById(R.id.vp);
         vp.setAdapter(new CyFragmentAdapter(getSupportFragmentManager(),list));
         vp.setOnPageChangeListener(this);
+        player=MediaPlayer.create(getApplicationContext(),R.raw.ge);
+        player.start();
+        if (!player.isPlaying()){
+            player.reset();
+            player.release();
+        }
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(radioButton2.isChecked()){
+                            radioButton3.performClick();
+                        }else
+                        if(radioButton3.isChecked()){
+                            radioButton.performClick();
+                        }else
+                        if(radioButton.isChecked()){
+                            radioButton2.performClick();
+                        }
+                    }
+                });
+            }
+        },0,1400);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        player.reset();
+        player.release();
+        timer.cancel();
     }
 
     @Override

@@ -2,14 +2,13 @@ package com.lenovo.manufacture;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.AbsListView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lenovo.manufacture.cy.Util.Ok;
 import com.lenovo.manufacture.cy.adapter.CyListAdapter;
 import com.lenovo.manufacture.cy.adapter.Demo;
-import com.lenovo.manufacture.hxf.Utils.MyOkHttp;
 
 import org.json.JSONObject;
 
@@ -55,7 +54,7 @@ public class Main4Activity extends AppCompatActivity {
 
     private void postdata() {
         try {
-            object = MyOkHttp.postData(this,"/transportservice/action/GetAllSense.do","{\"UserName\":\"user1\"}");
+            object = Ok.Post(this,"/transportservice/action/GetAllSense.do","{\"UserName\":\"user1\"}");
             pm25 = object.getInt("pm2.5");
             co2 = object.getInt("co2");
             light = object.getInt("LightIntensity");

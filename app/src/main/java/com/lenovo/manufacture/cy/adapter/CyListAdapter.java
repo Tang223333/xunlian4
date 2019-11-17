@@ -2,7 +2,6 @@ package com.lenovo.manufacture.cy.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -16,7 +15,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,13 +117,14 @@ public class CyListAdapter extends BaseAdapter implements View.OnClickListener {
                         .setContentText("text")//设置内容
                         .setContentIntent(pend)//设置跳转
                         .setSmallIcon(R.mipmap.ic_launcher)//设置小图标（必须有这个方法）
+                        .setAutoCancel(true)//用户点击Notification点击面板后是否让通知取消(默认不取消)
                         .build();
 
                 NotificationManager manager= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
                 manager.createNotificationChannel(new NotificationChannel("123","123",NotificationManager.IMPORTANCE_MAX));
-                //android8.0之后必须要给每隔通知设置一个渠道
-                //IMPORTANCE_DEFAULT：表示默认重要程度，和不设置效果一样
+                //android8.0之后必须要给每个通知设置一个渠道
+                //IMPORTANCE_DEFAULT：表示默认重要程度
                 //IMPORTANCE_MIN：表示最低的重要程度。系统只会在用户下拉状态栏的时候才会显示
                 //IMPORTANCE_LOW：表示较低的重要性，系统会将这类通知缩小，或者改变显示的顺序，将排在更重要的通知之后。
                 //IMPORTANCE_HIGH：表示较高的重要程度，系统可能会将这类通知方法，或改变显示顺序，比较靠前
@@ -143,7 +142,7 @@ public class CyListAdapter extends BaseAdapter implements View.OnClickListener {
                 pdialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 pdialog.setMax(100);
                 pdialog.show();
-                pdialog.setCancelable(false);
+                pdialog.setCancelable(false);//点击外部取消，默认为true
                 new Thread(new Runnable() {//两秒后关闭
                     @Override
                     public void run() {
