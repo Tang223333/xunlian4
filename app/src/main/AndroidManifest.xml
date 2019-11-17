@@ -20,10 +20,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".thl.service.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <receiver
             android:name=".thl.Broadcast.MyReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="start" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".thl.Thl_4Activity" />
         <activity android:name=".thl.Thl_3Activity" />
@@ -68,6 +77,17 @@
             android:name=".TestActivity"
             android:configChanges="orientation|screenSize|uiMode"
             android:theme="@style/AppTheme" />
+
+        <receiver android:name=".thl.Broadcast.BroadcastTwo">
+            <intent-filter>
+                <action android:name="android.intent.cation.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".thl.Broadcast.BroadcastOne">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
