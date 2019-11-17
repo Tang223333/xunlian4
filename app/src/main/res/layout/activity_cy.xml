@@ -18,6 +18,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/cybtn"
+            android:text="Banner"
+            android:checked="true"/>
             android:button="@null"
             android:checked="true"
             android:gravity="center"

@@ -42,6 +42,12 @@ public class MediaplayActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
+
     private void initView() {
         gti = (TextView) findViewById(R.id.gti);
         bar = (AppCompatSeekBar) findViewById(R.id.bar);
@@ -65,9 +71,6 @@ public class MediaplayActivity extends AppCompatActivity {
                         if (currentPosition ==duration){
                             mediaPlayer.stop();
                         }
-
-
-
                         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                             @Override
                             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
