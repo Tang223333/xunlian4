@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.lenovo.manufacture.BuildConfig;
 import com.lenovo.manufacture.R;
+import com.lenovo.manufacture.hxf.Utils.CustomVideoView;
 import com.lenovo.manufacture.hxf.Utils.GetPhoneInfo;
 import com.lenovo.manufacture.hxf.adapter.MyViewPagerAdapter;
 
@@ -35,7 +37,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
+public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, MediaPlayer.OnCompletionListener {
 
     private ViewPager viewPager;
     private TextView phone_Info;
@@ -65,6 +67,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private TextView tv_viewPager03;
     private List<View> tabViewList;
     private LinearLayout layout_topTab;
+    private FrameLayout layout_dialogVideo_father;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -264,15 +267,16 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
                 timer.cancel();
                 break;
             case R.id.btn_playVideo:
-                layout_viewPager_father.setPadding(5, 60, 5, 40);
+//                layout_viewPager_father.setPadding(45, 60, 45, 60);
                 removeAllView();
-                videoView = new VideoView(this);
+                videoView = new CustomVideoView(this);
+                videoView.setOnCompletionListener(this);
 //                layout_viewPager_father.addView(videoView);
 
                 //TODO 对话框式视频播放器
                 View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_blank_dialog, null, false);
                 customDialogShow(inflate,0,"","");
-                FrameLayout layout_dialogVideo_father = inflate.findViewById(R.id.layout_dialogVideo_father);
+                layout_dialogVideo_father = inflate.findViewById(R.id.layout_dialogVideo_father);
                 layout_dialogVideo_father.removeAllViews();
                 layout_dialogVideo_father.addView(videoView);
 
@@ -284,14 +288,23 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
                 break;
             case R.id.btn_dialog_negative:
                 dialog.dismiss();
+                if (layout_dialogVideo_father != null) {
+                    rePlayVideo();
+                }
                 Toast.makeText(this, "已取消！", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_dialog_neutral:
                 dialog.dismiss();
+                if (layout_dialogVideo_father != null) {
+                    rePlayVideo();
+                }
                 Toast.makeText(this, "已忽略！", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_dialog_positive:
                 dialog.dismiss();
+                if (layout_dialogVideo_father != null) {
+                    rePlayVideo();
+                }
                 Toast.makeText(this, "已确定！", Toast.LENGTH_SHORT).show();
                 break;
             default:
@@ -315,5 +328,25 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         layout_viewPager_father.removeAllViews();
 //        layout_viewPager_father.removeView(viewPager);
 //        layout_viewPager_father.removeView(videoView);
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+            rePlayVideo();
+        }
+    }
+
+    private void rePlayVideo() {
+        removeAllView();
+        layout_dialogVideo_father.removeAllViews();
+//        layout_viewPager_father.setPadding(45, 60, 45, 60);
+        layout_viewPager_father.addView(videoView);
+        //TODO 设置视频文件
+        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.pm));
+        //TODO 设置控制条
+        videoView.setMediaController(new MediaController(this));
+        videoView.start();
     }
 }

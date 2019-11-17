@@ -37,7 +37,7 @@
 
         <LinearLayout
             android:id="@+id/layout_viewPager_father"
-            android:layout_width="650dp"
+            android:layout_width="750dp"
             android:layout_height="400dp"
             android:orientation="vertical">
 
