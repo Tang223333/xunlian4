@@ -21,11 +21,11 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_playMusic"
@@ -103,11 +103,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_startFlip"
@@ -119,15 +119,25 @@
                 android:id="@+id/btn_stopFlip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
                 android:text="停止轮播" />
 
             <Button
                 android:id="@+id/btn_playVideo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="播放视频" />
+                android:text="播放弹窗视频" />
+
+            <Button
+                android:id="@+id/btn_playBeforeVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上一个视频" />
+
+            <Button
+                android:id="@+id/btn_playAfterVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下一个视频" />
         </LinearLayout>
     </LinearLayout>
 
