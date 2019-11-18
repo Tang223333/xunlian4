@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.lenovo.manufacture.hxf.MyActivity.Hxf_NetworkDataRequestActivity;
 import com.lenovo.manufacture.hxf.MyActivity.Hxf_ViewPagerActivity;
+import com.lenovo.manufacture.hxf.service.MyService;
 
 public class Main3Activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,12 +27,12 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         initView();
-
+        //TODO 启动服务
+        startService(new Intent(this, MyService.class));
     }
 
     @SuppressLint("ResourceType")
     private void initView() {
-
         layout_root = findViewById(R.id.layout_root);
         layout_root.setGravity(Gravity.CENTER);
         tv_start_hxfActivity = findViewById(R.id.tv_start_hxfActivity);

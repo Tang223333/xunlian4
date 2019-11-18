@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
+        android:name=".hyx.MyApplication"
         android:name=".thl.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +23,10 @@
         android:theme="@style/AppTheme">
         <service
             android:name=".thl.service.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".hxf.service.MyService"
             android:enabled="true"
             android:exported="true"></service>
 
@@ -40,6 +45,10 @@
         <activity android:name=".hyx.activity.MediaplayActivity" />
         <activity android:name=".hyx.activity.ShousActivity" />
         <activity android:name=".hyx.activity.YchuActivity" />
+        <activity android:name=".cy.activity.cyBannerActivity" />
+        <activity android:name=".hyx.activity.MediaplayActivity" />
+        <activity android:name=".hyx.activity.ShousActivity" />
+        <activity android:name=".hyx.activity.YchuActivity"></activity>
 
         <service
             android:name=".hyx.service.Service1"

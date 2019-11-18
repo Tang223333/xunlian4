@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -208,7 +207,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private void initDialog(View view) {
         dialog = new Dialog(this);
         dialog.setContentView(view);
-        dialog.getWindow().findViewById(R.id.layout);
+//        dialog.getWindow().findViewById(R.id.layout);
         mIvDialogIcon = (ImageView) dialog.getWindow().findViewById(R.id.iv_dialog_icon);
         mTvDialogTitle = (TextView) dialog.getWindow().findViewById(R.id.tv_dialog_title);
         mTvDialogContent = (TextView) dialog.getWindow().findViewById(R.id.tv_dialog_content);
