@@ -21,6 +21,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
     private TextView textView;
     private LinearLayout layout_root;
     private TextView tv_startViewPager;
+    private TextView tv_start_stopService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +39,15 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
         tv_start_hxfActivity = findViewById(R.id.tv_start_hxfActivity);
         tv_start_hxfActivity.setOnClickListener(this);
         textView = new TextView(this);
-        textView.setBackgroundColor(Color.argb(100,130,202,247));
+        textView.setBackgroundColor(Color.argb(100, 130, 202, 247));
         textView.setOnClickListener(this);
         textView.setId(0x0003);
-        addContentView(textView,new LinearLayout.LayoutParams(Hxf_NetworkDataRequestActivity.Width,
+        addContentView(textView, new LinearLayout.LayoutParams(Hxf_NetworkDataRequestActivity.Width,
                 Hxf_NetworkDataRequestActivity.Height));
         tv_startViewPager = findViewById(R.id.tv_startViewPager);
         tv_startViewPager.setOnClickListener(this);
+        tv_start_stopService = findViewById(R.id.tv_start_stopService);
+        tv_start_stopService.setOnClickListener(this);
     }
 
     @Override
@@ -55,8 +58,28 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tv_startViewPager:
                 startActivity(new Intent(this, Hxf_ViewPagerActivity.class));
+                //TODO 关闭服务
+                stopService(new Intent(this, MyService.class));
                 break;
-
+            case R.id.tv_start_stopService:
+                if (MyService.SERVICE_STATE) {
+                    //TODO 关闭服务
+                    stopService(new Intent(this, MyService.class));
+                    tv_start_stopService.setText("开启服务");
+                } else {
+                    //TODO 开启服务
+                    startService(new Intent(this, MyService.class));
+                    tv_start_stopService.setText("关闭服务");
+                }
+                break;
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //TODO 启动服务
+        startService(new Intent(this, MyService.class));
+        tv_start_stopService.setText("关闭服务");
     }
 }

@@ -93,6 +93,12 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         mediaPlayer.release();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setMusicResource();
+    }
+
     private void initTimer() {
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -184,7 +190,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
 
         layout_viewPager_father = findViewById(R.id.layout_viewPager_father);
         layout_viewPager_father.setBackgroundColor(Color.rgb(0, 0, 0));
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ge);
+        setMusicResource();
         videoView = new CustomVideoView(this);
 //        videoView = new VideoView(this);
         //TODO 设置播放结束的监听器
@@ -292,9 +298,9 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
                 break;
             case R.id.btn_playVideo:
                 try {
-                layout_viewPager_father.setPadding(45, 60, 45, 60);
+//                    layout_viewPager_father.setPadding(45, 60, 45, 60);
                     removeAllViews();
-                layout_viewPager_father.addView(videoView);
+//                    layout_viewPager_father.addView(videoView);
 
                     //TODO 对话框式视频播放器
                     View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_blank_dialog, null, false);
@@ -331,17 +337,17 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
                 Toast.makeText(this, "已确定！", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_playBeforeVideo:
-                if (STATE){
+                if (STATE) {
                     Toast.makeText(this, "请先播放弹窗视频！", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     initPlayVideo();
                     beforeVideoResource();
                 }
                 break;
             case R.id.btn_playAfterVideo:
-                if (STATE){
+                if (STATE) {
                     Toast.makeText(this, "请先播放弹窗视频！", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     initPlayVideo();
                     afterVideoResource();
                 }
@@ -370,11 +376,11 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private void playMusic() {
         if (!mediaPlayer.isPlaying()) {
             mediaPlayer.start();
-                    mBtnPlayMusic.setText("暂停播放");
+            mBtnPlayMusic.setText("暂停播放");
             mBtnPlayMusic.setBackgroundResource(R.mipmap.play);
         } else {
             mediaPlayer.pause();
-                    mBtnPlayMusic.setText("播放音乐");
+            mBtnPlayMusic.setText("播放音乐");
             mBtnPlayMusic.setBackgroundResource(R.mipmap.timeout);
         }
     }
@@ -403,7 +409,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private void initPlayVideo() {
         try {
             removeAllViews();
-        layout_viewPager_father.setPadding(45, 60, 45, 60);
+            layout_viewPager_father.setPadding(45, 60, 45, 60);
             layout_dialogVideo_father.removeAllViews();
             layout_viewPager_father.addView(videoView);
             setVideoResource();
@@ -411,6 +417,10 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
             e.printStackTrace();
             log.d("", e.toString());
         }
+    }
+
+    private void setMusicResource() {
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ge);
     }
 
     private void setVideoResource() {
