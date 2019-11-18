@@ -5,11 +5,14 @@
 
     <EditText
         android:id="@+id/cy_dialog_user"
+        android:hint="UserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:inputType="number"
         android:id="@+id/cy_dialog_password"
+        android:hint="Password"
         android:password="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

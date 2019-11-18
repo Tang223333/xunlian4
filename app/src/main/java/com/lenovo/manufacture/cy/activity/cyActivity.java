@@ -84,7 +84,6 @@ public class cyActivity extends AppCompatActivity implements RadioGroup.OnChecke
     @Override
     protected void onPause() {
         super.onPause();
-        player.reset();
         player.release();
         timer.cancel();
     }
