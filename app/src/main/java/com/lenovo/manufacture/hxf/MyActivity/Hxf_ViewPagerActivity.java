@@ -158,9 +158,9 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 设置当前页码，即打开翻页视图时默认显示哪一个页面
         viewPager.setCurrentItem(0);
 
-//        mViewPagerTitle = (PagerTitleStrip) findViewById(R.id.viewPager_title);
+//        mViewPagerTitle = (PagerTitleStrip) findViewById(R.id.viewPager_title);请保持注释
 
-//        mViewPagerTab = (PagerTabStrip) findViewById(R.id.viewPager_tab);
+//        mViewPagerTab = (PagerTabStrip) findViewById(R.id.viewPager_tab);请保持注释
     }
 
     public void getPhoneInfo(Context context) {
@@ -298,9 +298,9 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
                 break;
             case R.id.btn_playVideo:
                 try {
-//                    layout_viewPager_father.setPadding(45, 60, 45, 60);
+//                    layout_viewPager_father.setPadding(45, 60, 45, 60);请保持注释
                     removeAllViews();
-//                    layout_viewPager_father.addView(videoView);
+//                    layout_viewPager_father.addView(videoView);请保持注释
 
                     //TODO 对话框式视频播放器
                     View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_blank_dialog, null, false);

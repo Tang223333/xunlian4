@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tv_start_stopService"
-                android:text="关闭BGM"
+                android:text="关闭服务"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:layout_width="match_parent"

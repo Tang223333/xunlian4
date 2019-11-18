@@ -67,6 +67,7 @@ public class Hxf_NetworkDataRequestActivity extends AppCompatActivity implements
     private Timer timer8;
     private Timer timer9;
     private Timer timer10;
+    private JSONObject jsonObject = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -328,7 +329,6 @@ public class Hxf_NetworkDataRequestActivity extends AppCompatActivity implements
     @SuppressLint("LongLogTag")
     private void postData() {
         try {
-            JSONObject jsonObject = new JSONObject();
             jsonObject.put("UserName", "user1");
             resultData = MyOkHttp.postData(getApplicationContext(), "GetAllSense.do", jsonObject.toString());
             person = new Gson().fromJson(resultData.toString(), Person.class);
