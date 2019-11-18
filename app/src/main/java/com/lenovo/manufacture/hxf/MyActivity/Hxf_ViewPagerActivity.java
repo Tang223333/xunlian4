@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -184,7 +183,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
 
         layout_viewPager_father = findViewById(R.id.layout_viewPager_father);
         layout_viewPager_father.setBackgroundColor(Color.rgb(0, 0, 0));
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.jskw);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ge);
         videoView = new CustomVideoView(this);
 //        videoView = new VideoView(this);
         //TODO 设置播放结束的监听器
@@ -192,7 +191,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 在准备好的侦听器上设置
         videoView.setOnPreparedListener(this);
         videoResource = new LinkedList<>();
-        videoResource.add(R.raw.jskw);
+        videoResource.add(R.raw.ge);
         videoResource.add(R.raw.pm);
         videoResource.add(R.raw.pm);
         videoResource.add(R.raw.pm);
