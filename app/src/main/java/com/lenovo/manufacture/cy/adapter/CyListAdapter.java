@@ -103,7 +103,8 @@ public class CyListAdapter extends BaseAdapter implements View.OnClickListener {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(context, "toast", Toast.LENGTH_SHORT).show();
                     }
-                });
+                })
+                        .setView(LayoutInflater.from(context).inflate(R.layout.cy_dialog,null,false));
                 dialog.create();
                 dialog.show();
                 break;
