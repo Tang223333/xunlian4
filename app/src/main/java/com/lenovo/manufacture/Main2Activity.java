@@ -26,6 +26,8 @@ import com.lenovo.manufacture.cy.fragment.CyFragment3Fragment;
 import com.lenovo.manufacture.thl.Broadcast.BroadcastOne;
 import com.lenovo.manufacture.thl.Broadcast.MyReceiver;
 import com.lenovo.manufacture.thl.TangHaiLong_01;
+import com.lenovo.manufacture.thl.Thl_3Activity;
+import com.lenovo.manufacture.thl.Thl_4Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -232,9 +234,13 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_change_time:
+                Intent intent=new Intent(Main2Activity.this, Thl_3Activity.class);
+                startActivity(intent);
                 Toast.makeText(this, "改变时间", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menu_change_color:
+                Intent intent2=new Intent(Main2Activity.this, Thl_4Activity.class);
+                startActivity(intent2);
                 Toast.makeText(this, "改变颜色", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menu_change_bg:

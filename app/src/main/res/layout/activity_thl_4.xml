@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/thl4_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".thl.Thl_4Activity">
+    
+    <LinearLayout
+        android:id="@+id/thl4_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="af"
-        android:textSize="35sp"
-        android:id="@+id/btn_xc"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/thl4_btn1"
+            android:text="显示简单提示条"
+            android:layout_gravity="center"
+            android:textSize="35sp"
+            android:textColor="#000000"
+            android:layout_marginTop="30dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="35sp"
-        android:text="44"
-        android:id="@+id/text_xc"/>
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/thl4_btn2"
+            android:text="隐藏悬浮按钮"
+            android:layout_gravity="center"
+            android:textSize="35sp"
+            android:textColor="#000000"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/thl4_fa_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_anchor="@id/thl4_ll"
+        app:layout_anchorGravity="bottom|right">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

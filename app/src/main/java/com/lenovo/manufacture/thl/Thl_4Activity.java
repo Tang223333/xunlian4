@@ -1,86 +1,68 @@
 package com.lenovo.manufacture.thl;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.lenovo.manufacture.R;
-import com.lenovo.manufacture.thl.Broadcast.MyReceiver;
 
-public class Thl_4Activity extends AppCompatActivity {
-    private String TAG="Thl_4Activity========";
-    Button button;
-    TextView textView;
-    Drawable drawable;
-    MyReceiver myReceiver;
+public class Thl_4Activity extends AppCompatActivity implements View.OnClickListener {
+    private String TAG = "Thl_4Activity========";
+    private CoordinatorLayout thl4Cl;
+    private LinearLayout thl4Ll;
+    private Button thl4Btn1;
+    private Button thl4Btn2;
+    private FloatingActionButton thl4FaBtn;
+    private boolean isshow=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thl_4);
-        button=findViewById(R.id.btn_xc);
-        textView=findViewById(R.id.text_xc);
-        drawable=getResources().getDrawable(R.mipmap.ic_launcher);
-        drawable.setBounds(0,0,drawable.getMinimumWidth(),drawable.getMinimumHeight());//图片大小一定要加
-        button.setCompoundDrawables(drawable,null,null,null);
-        textView.setCompoundDrawables(null,drawable,null,null);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                button.setCompoundDrawables(null,null,drawable,null);
-                textView.setCompoundDrawables(null,null,null,drawable);
-            }
-        });
-        Log.d(TAG, "onCreate");
+        initView();
+    }
 
-        myReceiver=new MyReceiver();//初始化一个BroadcastTeceiver对象
-        IntentFilter intentFilter1=new IntentFilter();//定义一个intent过滤器
-        intentFilter1.addAction("start");
-        registerReceiver(myReceiver,intentFilter1);//注册接收者
+    private void initView() {
+        thl4Cl = (CoordinatorLayout) findViewById(R.id.thl4_cl);
+        thl4Ll = (LinearLayout) findViewById(R.id.thl4_ll);
+        thl4Btn1 = (Button) findViewById(R.id.thl4_btn1);
+        thl4Btn2 = (Button) findViewById(R.id.thl4_btn2);
+        thl4FaBtn = (FloatingActionButton) findViewById(R.id.thl4_fa_btn);
 
+        thl4Btn1.setOnClickListener(this);
+        thl4Btn2.setOnClickListener(this);
+        
+        thl4FaBtn.setOnClickListener(this);
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "onRestart");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(myReceiver);
-        Log.d(TAG, "onPause");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop");
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.thl4_btn1:
+                Snackbar snackbar=Snackbar.make(v,"简单提示框",Snackbar.LENGTH_SHORT);
+                snackbar.show();
+                break;
+            case R.id.thl4_btn2:
+                if (isshow){
+                    thl4Btn2.setText("显示悬浮按钮");
+                    thl4FaBtn.hide();
+                    isshow=false;
+                }else {
+                    thl4Btn2.setText("隐藏悬浮按钮");
+                    thl4FaBtn.show();
+                    isshow=true;
+                }
+                break;
+            case R.id.thl4_fa_btn:
+                Toast.makeText(this, "你点了个球", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
