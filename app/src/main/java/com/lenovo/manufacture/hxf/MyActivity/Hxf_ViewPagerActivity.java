@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -191,12 +192,10 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 在准备好的侦听器上设置
         videoView.setOnPreparedListener(this);
         videoResource = new LinkedList<>();
-        videoResource.add(R.raw.ge);
         videoResource.add(R.raw.pm);
-        videoResource.add(R.raw.pm);
-        videoResource.add(R.raw.pm);
-        videoResource.add(R.raw.pm);
-        videoResource.add(R.raw.pm);
+        videoResource.add(R.raw.pm1);
+        videoResource.add(R.raw.pm2);
+        videoResource.add(R.raw.pm3);
         View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_custom_dialog, null, false);
         customDialogShow(inflate, R.mipmap.icon, getString(R.string.dialog_title), getString(R.string.dialog_content));
         //TODO 创建媒体控制器
@@ -206,7 +205,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private void initDialog(View view) {
         dialog = new Dialog(this);
         dialog.setContentView(view);
-//        dialog.getWindow().findViewById(R.id.layout);
+        dialog.getWindow().findViewById(R.id.layout);
         mIvDialogIcon = (ImageView) dialog.getWindow().findViewById(R.id.iv_dialog_icon);
         mTvDialogTitle = (TextView) dialog.getWindow().findViewById(R.id.tv_dialog_title);
         mTvDialogContent = (TextView) dialog.getWindow().findViewById(R.id.tv_dialog_content);
@@ -293,9 +292,9 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
                 break;
             case R.id.btn_playVideo:
                 try {
-//                layout_viewPager_father.setPadding(45, 60, 45, 60);
+                layout_viewPager_father.setPadding(45, 60, 45, 60);
                     removeAllViews();
-//                layout_viewPager_father.addView(videoView);
+                layout_viewPager_father.addView(videoView);
 
                     //TODO 对话框式视频播放器
                     View inflate = LayoutInflater.from(this).inflate(R.layout.hxf_blank_dialog, null, false);
@@ -356,7 +355,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 上一个视频
         currentVideo = (Math.abs((currentVideo - 1) % videoResource.size()));
         log.d("", String.valueOf(currentVideo));
-//        resource = String.valueOf(videoResource.get(currentVideo));
+        resource = String.valueOf(videoResource.get(currentVideo));
         videoView.start();
     }
 
@@ -364,26 +363,26 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
         //TODO 下一个视频
         currentVideo = (currentVideo + 1) % videoResource.size();
         log.d("", String.valueOf(currentVideo));
-//        resource = String.valueOf(videoResource.get(currentVideo));
+        resource = String.valueOf(videoResource.get(currentVideo));
         videoView.start();
     }
 
     private void playMusic() {
         if (!mediaPlayer.isPlaying()) {
             mediaPlayer.start();
-//                    mBtnPlayMusic.setText("暂停播放");
+                    mBtnPlayMusic.setText("暂停播放");
             mBtnPlayMusic.setBackgroundResource(R.mipmap.play);
         } else {
             mediaPlayer.pause();
-//                    mBtnPlayMusic.setText("播放音乐");
+                    mBtnPlayMusic.setText("播放音乐");
             mBtnPlayMusic.setBackgroundResource(R.mipmap.timeout);
         }
     }
 
     private void removeAllViews() {
         layout_viewPager_father.removeAllViews();
-//        layout_viewPager_father.removeView(viewPager);
-//        layout_viewPager_father.removeView(videoView);
+        layout_viewPager_father.removeView(viewPager);
+        layout_viewPager_father.removeView(videoView);
     }
 
     //TODO 播放器已经准备ok时触发的监听器
@@ -404,7 +403,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
     private void initPlayVideo() {
         try {
             removeAllViews();
-//        layout_viewPager_father.setPadding(45, 60, 45, 60);
+        layout_viewPager_father.setPadding(45, 60, 45, 60);
             layout_dialogVideo_father.removeAllViews();
             layout_viewPager_father.addView(videoView);
             setVideoResource();
@@ -416,7 +415,7 @@ public class Hxf_ViewPagerActivity extends AppCompatActivity implements ViewPage
 
     private void setVideoResource() {
         //TODO 设置视频文件
-//        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + resource));
+        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + resource));
         //TODO 设置媒体控制器
         videoView.setMediaController(mediaController);
         videoView.start();

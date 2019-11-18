@@ -4,8 +4,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.lenovo.manufacture.R;
 
@@ -16,7 +14,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        player=MediaPlayer.create(getApplicationContext(),R.raw.jskw);
+        player=MediaPlayer.create(getApplicationContext(),R.raw.ge);
         player.start();
         return super.onStartCommand(intent, flags, startId);
     }

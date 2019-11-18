@@ -61,6 +61,7 @@ public class Thl_3Activity extends Activity {
     private Spinner thl3Spinner;
     private Drawable drawable;//声明一个图形对象
     MyReceiver myReceiver;
+    private LinearLayout thl3Ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,47 +181,47 @@ public class Thl_3Activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(Thl_3Activity.this, "你点击了第" + (position + 1) + "个item", Toast.LENGTH_SHORT).show();
-                switch (position){
+                switch (position) {
                     case 0:
                         @SuppressLint("WrongConstant")
-                        NotificationChannel notificationChannel=new NotificationChannel("ones","1111",4);
-                        NotificationManager notificationManager= (NotificationManager) Thl_3Activity.this.getSystemService(NOTIFICATION_SERVICE);
+                        NotificationChannel notificationChannel = new NotificationChannel("ones", "1111", 4);
+                        NotificationManager notificationManager = (NotificationManager) Thl_3Activity.this.getSystemService(NOTIFICATION_SERVICE);
                         notificationManager.createNotificationChannel(notificationChannel);
-                        Notification notification=new Notification.Builder(Thl_3Activity.this,"ones")
+                        Notification notification = new Notification.Builder(Thl_3Activity.this, "ones")
                                 .setContentTitle("11111111")
                                 .setContentText("222222222")
                                 .setSettingsText("33333333")
                                 .setSubText("4444444444")
                                 .setSmallIcon(R.mipmap.ic_launcher)
                                 .build();
-                        notificationManager.notify(1,notification);
+                        notificationManager.notify(1, notification);
                         break;
                     case 1:
-                        AlertDialog alertDialog=new AlertDialog.Builder(Thl_3Activity.this)
+                        AlertDialog alertDialog = new AlertDialog.Builder(Thl_3Activity.this)
                                 .setTitle("11111111")
                                 .setIcon(R.mipmap.ic_launcher)
                                 .setMessage("3333333")
-                                .setNegativeButton("11111",null)
-                                .setNeutralButton("22222",null)
-                                .setPositiveButton("33333",null)
+                                .setNegativeButton("11111", null)
+                                .setNeutralButton("22222", null)
+                                .setPositiveButton("33333", null)
                                 .show();
                         break;
                     case 2:
-                        Dialog dialog=new Dialog(Thl_3Activity.this);
+                        Dialog dialog = new Dialog(Thl_3Activity.this);
                         dialog.show();
                         dialog.getWindow().setContentView(R.layout.dialog_item);
-                        TextView textView=dialog.getWindow().findViewById(R.id.text_title);
+                        TextView textView = dialog.getWindow().findViewById(R.id.text_title);
                         textView.setText("111111111");
-                        TextView textView1=dialog.getWindow().findViewById(R.id.text_car_id);
+                        TextView textView1 = dialog.getWindow().findViewById(R.id.text_car_id);
                         textView1.setText("2222222222");
-                        Button button=dialog.getWindow().findViewById(R.id.btn_qx);
+                        Button button = dialog.getWindow().findViewById(R.id.btn_qx);
                         button.setText("去去去取消");
-                        Button button1=dialog.getWindow().findViewById(R.id.btn_qr);
+                        Button button1 = dialog.getWindow().findViewById(R.id.btn_qr);
                         button1.setText("确确确确认");
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent=new Intent(Thl_3Activity.this,Thl_4Activity.class);
+                                Intent intent = new Intent(Thl_3Activity.this, Thl_4Activity.class);
                                 startActivity(intent);
                                 dialog.dismiss();
                             }
@@ -228,7 +229,7 @@ public class Thl_3Activity extends Activity {
                         button1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent=new Intent(Thl_3Activity.this,Thl_4Activity.class);
+                                Intent intent = new Intent(Thl_3Activity.this, Thl_4Activity.class);
                                 startActivity(intent);
                                 dialog.dismiss();
                             }
@@ -237,25 +238,25 @@ public class Thl_3Activity extends Activity {
                 }
             }
         });
-        thl3List.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Thl_3Activity.this, "你长按了第" + (position + 1) + "个item", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
+//        thl3List.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(Thl_3Activity.this, "你长按了第" + (position + 1) + "个item", Toast.LENGTH_SHORT).show();
+//                return true;
+//            }
+//        });
         thl3Spinner = (Spinner) findViewById(R.id.thl3_spinner);
         thl3Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int dividerHeight=5;//宽度
-                LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                drawable=getResources().getDrawable(R.drawable.divider_red2);
+                int dividerHeight = 5;//宽度
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                drawable = getResources().getDrawable(R.drawable.divider_red2);
                 thl3List.setDivider(drawable);//设置listView的分隔线
                 thl3List.setDividerHeight(dividerHeight);//设置listView的分隔线高度
-                thl3List.setPadding(0,0,0,0);//设置list View四周空白
+                thl3List.setPadding(0, 0, 0, 0);//设置list View四周空白
                 thl3List.setBackgroundColor(Color.TRANSPARENT);//设置listView的背景颜色
-                switch (position){
+                switch (position) {
                     case 0://不显示分隔线（分割线高度为0）
                         thl3List.setDividerHeight(0);
                         break;
@@ -272,22 +273,22 @@ public class Thl_3Activity extends Activity {
                         thl3List.setDividerHeight(dividerHeight);
                         break;
                     case 4://显示底部分隔线（高度是wrap_content）
-                        params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,0,1);
+                        params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0, 1);
                         thl3List.setFooterDividersEnabled(true);
                         break;
                     case 5://显示底部分隔线（高度是match_parent）
-                        params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1);
+                        params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1);
                         thl3List.setFooterDividersEnabled(true);
                         break;
                     case 6://显示顶部分隔线（别折腾了，显示不了）
-                        params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1);
+                        params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1);
                         thl3List.setHeaderDividersEnabled(true);
                         thl3List.setFooterDividersEnabled(true);
                         break;
                     case 7://显示全部分割线（使用Padding大法）注意：使用Padding时背景不能设置为透明
                         thl3List.setDivider(null);
                         thl3List.setDividerHeight(dividerHeight);
-                        thl3List.setPadding(dividerHeight,dividerHeight,dividerHeight,dividerHeight);
+                        thl3List.setPadding(dividerHeight, dividerHeight, dividerHeight, dividerHeight);
                         thl3List.setBackgroundDrawable(drawable);
                         break;
                 }
@@ -300,10 +301,11 @@ public class Thl_3Activity extends Activity {
             }
         });
 
-        myReceiver=new MyReceiver();//初始化一个BroadcastTeceiver对象
-        IntentFilter intentFilter1=new IntentFilter();//定义一个intent过滤器
+        myReceiver = new MyReceiver();//初始化一个BroadcastTeceiver对象
+        IntentFilter intentFilter1 = new IntentFilter();//定义一个intent过滤器
         intentFilter1.addAction("start");
-        registerReceiver(myReceiver,intentFilter1);//注册接收者
+        registerReceiver(myReceiver, intentFilter1);//注册接收者
+        thl3Ll = (LinearLayout) findViewById(R.id.thl3_ll);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -388,7 +390,7 @@ public class Thl_3Activity extends Activity {
 
     @Override
     protected void onResume() {
-        registerForContextMenu(textMenu2);
+        registerForContextMenu(thl3Ll);
         unregisterReceiver(myReceiver);
         super.onResume();
         Log.d(TAG, "onResume");
@@ -396,7 +398,7 @@ public class Thl_3Activity extends Activity {
 
     @Override
     protected void onPause() {
-        unregisterForContextMenu(textMenu2);
+        unregisterForContextMenu(thl3Ll);
         super.onPause();
         Log.d(TAG, "onPause");
     }

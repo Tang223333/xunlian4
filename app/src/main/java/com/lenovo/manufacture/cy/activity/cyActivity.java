@@ -1,7 +1,6 @@
 package com.lenovo.manufacture.cy.activity;
 
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.RadioButton;
@@ -55,7 +54,7 @@ public class cyActivity extends AppCompatActivity implements RadioGroup.OnChecke
         vp = (ViewPager) findViewById(R.id.vp);
         vp.setAdapter(new CyFragmentAdapter(getSupportFragmentManager(),list));
         vp.setOnPageChangeListener(this);
-        player=MediaPlayer.create(getApplicationContext(),R.raw.jskw);
+        player=MediaPlayer.create(getApplicationContext(),R.raw.ge);
         player.start();
         if (!player.isPlaying()){
             player.reset();

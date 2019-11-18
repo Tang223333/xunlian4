@@ -36,7 +36,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/thl4_fa_btn"
-        android:layout_width="100dp"
+        android:layout_width="102dp"
         android:layout_height="100dp"
         app:layout_anchor="@id/thl4_ll"
         app:layout_anchorGravity="bottom|right">
