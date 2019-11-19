@@ -20,7 +20,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".thl.Thl_6Activity" android:theme="@style/app"></activity>
+        <activity android:name=".thl.Thl_8Activity"></activity>
+        <activity
+            android:name=".thl.Thl_7Activity"
+            android:theme="@style/app" />
+        <activity
+            android:name=".thl.Thl_6Activity"
+            android:theme="@style/app" />
         <activity
             android:name=".thl.Thl_5Activity"
             android:theme="@style/app" />

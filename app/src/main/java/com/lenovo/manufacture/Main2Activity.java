@@ -30,6 +30,8 @@ import com.lenovo.manufacture.thl.Thl_3Activity;
 import com.lenovo.manufacture.thl.Thl_4Activity;
 import com.lenovo.manufacture.thl.Thl_5Activity;
 import com.lenovo.manufacture.thl.Thl_6Activity;
+import com.lenovo.manufacture.thl.Thl_7Activity;
+import com.lenovo.manufacture.thl.Thl_8Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -255,8 +257,12 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent4);
                 break;
             case R.id.menu_item5:
+                Intent intent5=new Intent(Main2Activity.this, Thl_7Activity.class);
+                startActivity(intent5);
                 break;
             case R.id.menu_item6:
+                Intent intent6=new Intent(Main2Activity.this, Thl_8Activity.class);
+                startActivity(intent6);
                 break;
         }
         return true;
