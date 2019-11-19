@@ -7,21 +7,28 @@
 
     <item
         android:id="@+id/menu_change_color"
-        android:orderInCategory="8"
+        android:orderInCategory="2"
         android:title="改变颜色"/>
 
     <item
         android:id="@+id/menu_change_bg"
-        android:orderInCategory="9"
+        android:orderInCategory="3"
         android:title="改变背景">
-        <menu>
-            <item
-                android:orderInCategory="1"
-                android:title="改变时间"/>
+    </item>
 
-            <item
-                android:orderInCategory="8"
-                android:title="改变颜色"/>
-        </menu>
+    <item
+        android:id="@+id/menu_item4"
+        android:orderInCategory="4"
+        android:title="4"/>
+
+    <item
+        android:id="@+id/menu_item5"
+        android:orderInCategory="8"
+        android:title="5"/>
+
+    <item
+        android:id="@+id/menu_item6"
+        android:orderInCategory="9"
+        android:title="6">
     </item>
 </menu>
